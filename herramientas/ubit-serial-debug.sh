@@ -14,4 +14,4 @@ then
     done
 fi
 
-screen /dev/ttyACM0
+screen /dev/ttyACM0 9600
