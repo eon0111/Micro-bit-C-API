@@ -7,8 +7,14 @@
  * 
  */
 
+#include <stdbool.h>
+
+#define DISPLAY_DIM 5
+
+typedef bool imagen_t[DISPLAY_DIM][DISPLAY_DIM];
+
 /* display.c */
 void display_inicializa();
 void display_enciende_LED(int x, int y);
-void display_apaga_LED(int x, int y);
-void display_estado_LED(int x, int y)
+int display_apaga_LED(int x, int y);
+bool display_estado_LED(int x, int y);
