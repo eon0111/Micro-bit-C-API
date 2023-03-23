@@ -7,14 +7,17 @@
  * 
  */
 
-#include <stdbool.h>
+#include "../microbian/microbian.h"
+#include "../microbian/hardware.h"
+#include "../microbian/lib.h"
+#include "sprites.h"
 
 #define DISPLAY_DIM 5
 
-typedef bool imagen_t[DISPLAY_DIM][DISPLAY_DIM];
-
 /* display.c */
-void display_inicializa();
-void display_enciende_LED(int x, int y);
+typedef int imagen_t[DISPLAY_DIM][DISPLAY_DIM];
+typedef enum {INT_BAJA, INT_MEDIA, INT_ALTA} intensidad_t;
+int display_inicializa(intensidad_t i);
+int display_enciende_LED(int x, int y);
 int display_apaga_LED(int x, int y);
-bool display_estado_LED(int x, int y);
+int display_estado_LED(int x, int y);
