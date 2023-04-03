@@ -3,7 +3,7 @@
  * @author Noe Ruano Gutierrez (nrg916@alumnos.unican.es)
  * @brief Conjunto de rutinas para el manejo del display de 5x5 LEDs.
  * @version 0.1
- * @date TODO
+ * @date TODO:
  * 
  */
 
@@ -28,18 +28,14 @@ typedef struct {
  * terminación correcta 
  */
 int
-display_inicializa(intensidad_t intensidad)
+display_cambia_intensidad(intensidad_t intensidad)
 {
+    /* NOTE: podría haber hecho una configuración inicial del nivel de intensidad
+     * empleando el argumento de la función display_init(), pero preferimos no
+     * tocar la librería (copyright??) */
+
     if (intensidad < INT_BAJA || intensidad > INT_ALTA) return -1;
 
-    /* TODO: todas estas funciones de inicialización de dispositivos pueden agruparse en un wrapper que las llame a todas, para que el usuario no tenga que ir dispositivo a dispositivo haciendo las inicializaciones */
-    serial_init();
-
-    /* NOTE: La tarea de refresco del display requiere que el timer se encuentre
-     * inicializado para poder realizar el refresco del display cada 15ms */
-    timer_init();
-    display_init();
-    
     /* NOTE: podría emplear sus constantes (GPIO_DRIVE_X@hardware.c), pero 
      * tendría que hacer un mapeo de la intensidad (enumerado) a cada constante,
      * y este encima sería directo porque, por ejemplo, intensidad "INT_BAJA" sería
@@ -49,8 +45,6 @@ display_inicializa(intensidad_t intensidad)
     gpio_drive(ROW3, intensidad);
     gpio_drive(ROW4, intensidad);
     gpio_drive(ROW5, intensidad);
-
-    image_clear(imagen_actual_microbian);
 
     return 0;
 }
@@ -72,7 +66,7 @@ display_enciende_LED(int x, int y)
     image_set(x, y, imagen_actual_microbian);
 
     /* Actualiza el estado "legible" del display */
-    imagen_actual_legible[y][x] = 1;
+    imagen_actual_legible[x][y] = 1;
 
     /* Actualiza el valor de la variable compartida de la librería Microbian
      * que guarda el estado de los LEDs del display
@@ -113,7 +107,7 @@ display_apaga_LED(int x, int y)
     if (x < 0 || x >= DISPLAY_DIM || y < 0 || y >= DISPLAY_DIM) return -1;
 
     image_clear(imagen_actual_microbian);
-    imagen_actual_legible[y][x] = 0;
+    imagen_actual_legible[x][y] = 0;
 
     /*
      * La librería no implementa ninguna función que apague un LED. No obstante,
@@ -216,47 +210,4 @@ display_estado_LED(int x, int y)
     return -1;
 }
 
-void
-main(int n)
-{
-    printf(""); // NOTE: si no pongo el printf, no hace nada... WTF!
-
-    imagen_t prueba = {{1,1,0,1,0},{0,1,0,1,0},{0,0,0,0,0},{1,0,0,1,1},{0,1,1,1,0}};
-
-    display_muestra_imagen(prueba);
-    while (1)
-    {
-        gpio_drive(ROW1, INT_BAJA);
-        gpio_drive(ROW2, INT_BAJA);
-        gpio_drive(ROW3, INT_BAJA);
-        gpio_drive(ROW4, INT_BAJA);
-        gpio_drive(ROW5, INT_BAJA);
-        timer_delay(1000);
-        gpio_drive(ROW1, INT_ALTA);
-        gpio_drive(ROW2, INT_ALTA);
-        gpio_drive(ROW3, INT_ALTA);
-        gpio_drive(ROW4, INT_ALTA);
-        gpio_drive(ROW5, INT_ALTA);
-        timer_delay(1000);
-    }
-}
-
-void
-init(void)
-{
-    serial_init();
-    timer_init();
-    display_inicializa(INT_BAJA);
-    //printf(""); // NOTE: No puedo hacer un printf desde init, y no es porque en startup.c no haya include ni de microbian.h ni de lib.h (ya he probado a poner los includes y recompilar la librería, y no va)
-    start("main", main, 0, STACK);
-}
-
-/* TODO: hacer que la función principal sea "int main(int argc, char *argv)."
-    - Cambiar el nombre de la función en [7,11]@startup.c y [515,528]@microbian.c
-    - Para que el "main" reciba argumentos, hay que modificar el start():
-        > hay que hacer que la función reciba el entero "argc", calculado previamente en init() -> va a haber que parsear el string de argumentos para contar el número de elementos separados por el caracter espaciador
-        > también hay que pasarle el puntero al string de argumentos, y seguramente copiar dicho string en el stack del proceso "main"
-        > ...
- */
-
-/* NOTE: mirando en la librería ([148-186]@microbian.c), me doy cuenta de que el SO tan sólo admite 3 procesos en cualquier */
+/* NOTE: mirando en la librería ([148-186]@microbian.c), me doy cuenta de que el SO tan sólo admite 3 procesos en cualquier estado */
