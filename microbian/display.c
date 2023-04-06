@@ -96,10 +96,14 @@ void display_task(int dummy)
 #endif
     
 #ifdef UBIT_V2
+    /* NOTE: limpia el display (apaga todos los LEDs) */
     GPIO0.DIRSET = LED_MASK0;
     GPIO1.DIRSET = LED_MASK1;
     
-    /* Set row pins to high-drive mode to increase brightness */
+    /* NOTE: antes tenía una función de inicialización desde donde hacía lo del
+     * setup de la intensidad, pero es mejor pasarle el valor de intensidad
+     * directamente a esta función de inicialización para poder deshacerme 
+     * completamente de la mía ("display_inicializa()")*/
     gpio_drive(ROW1, GPIO_DRIVE_S0H1);
     gpio_drive(ROW2, GPIO_DRIVE_S0H1);
     gpio_drive(ROW3, GPIO_DRIVE_S0H1);
@@ -123,13 +127,15 @@ void display_task(int dummy)
 #ifdef UBIT_V2
         /* To avoid ghosting, clear GPIO0 (which contains the row bits)
            first and set it last. */
-        /* NOTE: en el OUTCLR de los GPIO indica que las señales de todas las filas (ROWx) y todas las columnas (COLx) deberán tener un valor de voltaje bajo (LOW), es decir, que permanecerán "apagadas" */
+        /* NOTE: en el OUTCLR de los GPIO indica que las señales de todas las
+         * filas (ROWx) y todas las columnas (COLx) deberán tener un valor de
+         * voltaje bajo (LOW), es decir, que permanecerán "apagadas" */
         GPIO0.OUTCLR = LED_MASK0;
         GPIO1.OUTCLR = LED_MASK1;
         GPIO1.OUTSET = display_image[n+1];
         GPIO0.OUTSET = display_image[n];
         n += 2;
-        if (n == 10) n = 0;
+        if (n == 10) n = 0; /* NOTE: en cada iteración muestra una fila de la imagen */
 #endif
 
         receive(PING, NULL);

@@ -88,7 +88,7 @@ static void radio_task(int dummy)
     RADIO.PACKETPTR = &packet_buffer;
 
     while (1) {
-        receive(ANY, &m);
+        receive(ANY, &m);   // NOTE: espera la recepción de algún mensaje a nivel de SO, cuando se invoca a las funciones de envío/recepción
         switch (m.type) {
         case INTERRUPT:
             /* A packet has been received */
@@ -184,7 +184,7 @@ void radio_send(void *buf, int n)
     message m;
     m.ptr1 = buf;
     m.int2 = n;
-    sendrec(RADIO_TASK, SEND, &m);
+    sendrec(RADIO_TASK, SEND, &m);  // NOTE: manda un mensaje a nivel de SO para que la tarea principal de la radio "radio_task" procese el envío de un nuevo mensaje
 }
 
 /* radio_receive -- receive radio packet and return length */

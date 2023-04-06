@@ -9,6 +9,8 @@
 
 #include "ubit.h"
 
+#define GRUPO_RADIO 1
+
 /**
  * @brief Esta función es el punto de entrada al código del usuario. Dicho
  * código no podrá ejecutar correctamente si no es como parte de un proceso de
@@ -23,7 +25,6 @@
 void
 init()
 {
-    //printf(""); // FIXME: No puedo hacer un printf desde init, y no es porque en startup.c no haya include ni de microbian.h ni de lib.h (ya he probado a poner los includes y recompilar la librería, y no va)
     microbit_inicializa_hardware();
     start("MAIN", main, 0, STACK);
 }
@@ -44,18 +45,24 @@ microbit_inicializa_hardware()
      * y pasarlos a las rutinas de microbian. Entonces esta función retornaría
      * un valor en función de la terminación (error/correcta) */
 
-
     /* NOTE: La tarea de refresco del display requiere que el timer se encuentre
      * inicializado para poder realizar el refresco del display cada 15ms */
     timer_init();
     serial_init();
+
     /* TODO: mirar el manual de la arquitectura a ver cómo va el I2C, y qué es INTERNAL y EXTERNAL */
     i2c_init(I2C_INTERNAL);
     i2c_init(I2C_EXTERNAL);
+    
     display_init();
 
     /* Inicialización de los botones directamente a través de los registros del
      * GPIO, porque no hay una función de librería que lo haga explícitamente */
     gpio_connect(BUTTON_A);
     gpio_connect(BUTTON_B);
+
+    radio_init();
+    radio_group(GRUPO_RADIO);
+
+    // FIXME: acel_init();    
 }

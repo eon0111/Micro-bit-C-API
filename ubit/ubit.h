@@ -10,12 +10,11 @@
 #include "../microbian/microbian.h"
 #include "../microbian/hardware.h"
 #include "../microbian/lib.h"
-#include "sprites.h"
 
 #define DISPLAY_DIM 5
 
 /* misc.c */
-void main(int n);
+void main(int n);   // NOTE: aquí va la cabecera de la función principal
 void microbit_inicializa_hardware();
 
 /* display.c */
@@ -35,3 +34,10 @@ void boton_A_espera_pulsacion();
 void boton_B_espera_pulsacion();
 int boton_A_pulsado();
 int boton_B_pulsado();
+
+/* radio.c */
+/* NOTE: casi que se pueden usar directamente las funciones de Microbian */
+
+/* acelerometro.c */
+void acel_init();
+void acel_lectura(int *x, int *y, int *z);

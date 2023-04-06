@@ -36,9 +36,6 @@ boton_B_pulsado()
     return !gpio_in(BUTTON_B) & 0x1;
 }
 
-/* NOTE: creo que las funciones de "espera_boton" son prescindibles (no cuesta
- * tanto construir el bucle de comprobación...) */
-
 /**
  * @brief Realiza una espera activa en tanto no se haya pulsado el botón A.
  * 

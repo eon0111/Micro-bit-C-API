@@ -35,7 +35,7 @@ argument to be a macro that expands the a 'position, width' pair. */
 
 
 /* Device pins */
-#define DEVPIN(p, i) ((p<<5) + i)
+#define DEVPIN(p, i) ((p<<5) + i) /* NOTE: el shift es para ponerte en un GPIO o en el otro. "p" es el índice del GPIO (0 ó 1) */
 #define PORT(x) ((x)>>5)
 #define PIN(x) ((x)&0x1f)
 
@@ -52,7 +52,7 @@ argument to be a macro that expands the a 'position, width' pair. */
 #define PAD12 DEVPIN(0, 12)
 #define PAD15 DEVPIN(0, 13)
 #define PAD5  DEVPIN(0, 14)
-#define   BUTTON_A PAD5
+#define   BUTTON_A PAD5     /* NOTE: boton_A@GPIO0[14] */
 #define ROW3 DEVPIN(0, 15)
 #define I2C0_SDA DEVPIN(0, 16)
 #define PAD13 DEVPIN(0, 17)
@@ -60,7 +60,7 @@ argument to be a macro that expands the a 'position, width' pair. */
 #define ROW1 DEVPIN(0, 21)  /* NOTE: PIN21@GPIO0 -> DEVPIN(0,21) = 0b0...00010101 */
 #define ROW2 DEVPIN(0, 22)
 #define PAD11 DEVPIN(0, 23)
-#define   BUTTON_B PAD11
+#define   BUTTON_B PAD11    /* NOTE: boton_B@GPIO0[23] */
 #define ROW4 DEVPIN(0, 24)
 #define PAD19 DEVPIN(0, 26)
 #define   I2C1_SCL PAD19
@@ -961,6 +961,12 @@ inline void gpio_out(unsigned pin, unsigned value) {
 /* gpio_in -- get GPIO input bit */
 inline unsigned gpio_in(unsigned pin) {
     return GET_BIT(GPIO[PORT(pin)]->IN, PIN(pin));
+    /* NOTE: con "PORT" obtiene el índice del GPIO, haciendo un shift de 5 bits
+     * hacia la dcha. Con "PIN" obtiene el resto de la dirección (índice del pin).
+     * "GET_BIT" lo que hace es acceder al registro IN del GPIO que corresponda
+     * y, al contenido, le hace un shift hacia la derecha un número de bits
+     * igual al índice del pin cuyo valor quiera leerse, y aplica una máscara
+     * para limpiar todos los bits más significativos que el LSB. */
 }
 
 
