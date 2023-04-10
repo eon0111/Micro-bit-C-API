@@ -39,5 +39,9 @@ int boton_B_pulsado();
 /* NOTE: casi que se pueden usar directamente las funciones de Microbian */
 
 /* acelerometro.c */
-void acel_init();
-void acel_lectura(int *x, int *y, int *z);
+void acelerometro_inicializa();
+int acelerometro_lectura_x();
+int acelerometro_lectura_y();
+int acelerometro_lectura_z();
+void brujula_inicializa();
+int brujula_lectura_x();

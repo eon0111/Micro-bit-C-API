@@ -104,12 +104,12 @@ static void i2c_task(int chan)
 
         switch (m.type) {
         case READ:
-            I2C[chan]->ADDRESS = addr;
+            I2C[chan]->ADDRESS = addr;  /* NOTE: indica en el registro de dirección del master I2C del Nordic la dirección del dispositivo (acelerómetro, brújula, termómetro, etc.) con el que contactar en la próxima comunicación I2C */
             status = OK;
              
             if (n1 > 0) {
                 /* Write followed by read, with repeated start */
-                I2C[chan]->STARTTX = 1;
+                I2C[chan]->STARTTX = 1; /* NOTE: como manda el protocolo, primero se manda la dirección del dispositivo, seguida del bit que indica si se leerá o se escribirá en la siguiente transacción entre maestro y esclavo */
                 status = i2c_do_write(chan, buf1, n1);
             }
 

@@ -553,7 +553,7 @@ _DEVICE _temp {
 
 
 /* I2C */
-_DEVICE _i2c {
+_DEVICE _i2c {  /* NOTE: a continuación se detallan las direcciones de cada registro en el maestro I2C del Nordic -> PDF-Nordic@p436 */
 /* Tasks */
     _REGISTER(unsigned STARTRX, 0x000);
     _REGISTER(unsigned STARTTX, 0x008);
@@ -586,7 +586,7 @@ _DEVICE _i2c {
     _REGISTER(unsigned TXD, 0x51c) ;
     _REGISTER(unsigned FREQUENCY, 0x524);
 #define   I2C_FREQUENCY_100kHz 0x01980000
-    _REGISTER(unsigned ADDRESS, 0x588);
+    _REGISTER(unsigned ADDRESS, 0x588); /* NOTE: la dirección del dispositivo con el que se realizará la siguiente comunicación I2C (I2C=TWI="Two Wire Interface") */
     _REGISTER(unsigned POWER, 0xffc);
 };
     

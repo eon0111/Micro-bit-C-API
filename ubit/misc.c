@@ -35,6 +35,8 @@ init()
  * cómo inicializar todo el hardware con una sola llamada, que tener que estar
  * incializando cada dispositivo cada vez que vayas a usarlo"
  * 
+ * FIXME: me da que no va a quedar más remedio que hacer que llamen a las 
+ * 
  */
 void
 microbit_inicializa_hardware()
@@ -45,12 +47,16 @@ microbit_inicializa_hardware()
      * y pasarlos a las rutinas de microbian. Entonces esta función retornaría
      * un valor en función de la terminación (error/correcta) */
 
+    serial_init();
+
     /* NOTE: La tarea de refresco del display requiere que el timer se encuentre
      * inicializado para poder realizar el refresco del display cada 15ms */
     timer_init();
-    serial_init();
 
-    /* TODO: mirar el manual de la arquitectura a ver cómo va el I2C, y qué es INTERNAL y EXTERNAL */
+    /* NOTE: INTERNAL se refiere a la interfaz I2C que da soporte a los
+     * dispositivos integrados en la placa y, EXTERNAL, se refiere a la interfaz
+     * I2C que da soporte a los dispositivos que se conecten a los pines I2C de
+     * la misma (33 (SCL) y 34 (SDA))  */
     i2c_init(I2C_INTERNAL);
     i2c_init(I2C_EXTERNAL);
     
@@ -64,5 +70,5 @@ microbit_inicializa_hardware()
     radio_init();
     radio_group(GRUPO_RADIO);
 
-    // FIXME: acel_init();    
+    //acelerometro_inicializa();    /* FIXME: por alguna razón que desconozco no se puede hacer la inicialización del acelerómetro desde fuera de un proceso de Microbian... */
 }

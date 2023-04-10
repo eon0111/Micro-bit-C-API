@@ -1,0 +1,19 @@
+GPIO0	@0x50000000	: P0.0-P0.31
+GPIO1	@0x50000300	: P1.0-P1.09
+--
+Registros:
+	OUT	@BASE+0x504	: consultar valor de salida configurado
+	OUTSET	@BASE+0x508	: establecer valor de salida
+	OUTCLR	@BASE+0x50C	: limpiar valor de salida
+	IN	@BASE+0x510	: leer valor en la entrada
+	DIR	@BASE+0x514	: consultar dirección configurada
+	DIRSET	@BASE+0x518	: establecer dirección
+	DIRCLR	@BASE+0x51C	: limpiar configuración de dirección
+	LATCH	@BASE+0x520	: consultar si se cumple la condición para el valor del pin (1 : true, 0 : false)
+	CNF[n]	@BASE+0x700+n*0x4	: configuración del pin N
+--
+Comunicación serie: https://support.microbit.org/support/solutions/articles/19000022103-outputing-serial-data-from-the-micro-bit-to-a-computer
+    -- $ dmesg | tail   -- para ver dónde se ha mapeado la placa (/dev/sdX)
+--
+> Display: sus funciones tan solo contemplan la utilización de procesos de Microbian para realizar el refresco del display. No hay ninguna función en la librería que permita encender un LED individual. Lo que hace es actualizar el estado del display escribiendo en la variable compartida "display_image" y, cuando llegue el refresco, se actualizará el valor de los outputs en los pines del GPIO que controlan los LEDs del display.
+Si se quiere utilizar sus funciones de librería para manejar el display, hay que hacer uso del display task, sí o sí, porque las otras funciones para modificar el estado de LEDs individuales o para mostrar una imagen 2D, se limitan a editar los valores almacenados en la variable compartida.

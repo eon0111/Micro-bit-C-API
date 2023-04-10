@@ -1,0 +1,79 @@
+TODO:
+    >>
+
+1. MATRIZ DE LEDS
+	1.1 Enciende un LED concreto (coordenadas (x,y))
+	1.2 Apaga un LED concreto ("")
+	1.3 Estado de un LED (LED(x,y) encendido/apagado?) -> dónde pongo el estado? -> lo guardo en un array en la librería
+	1.4 Mostrar sprite en la matriz: pasando un array unidimensional, y pasando array bidimensional
+	1.5 Mostrar secuencia de sprites, pasando matriz 3D (cada slice 2D es un fotograma)
+	...
+	
+	-- Hay dos GPIOs, 0 (@0x50000000) y 1 (@0x50000300). El primero maneja los pines del 0 al 31 y, el segundo el resto, es decir, del P1.0 al P1.09. ref[nRF52833.pdf@pág.144].
+	
+        ASIGNACIÓN DE PINES:
+            ROW1: GPIO0@21      COL1: GPIO0@28
+            ROW2: GPIO0@22      COL2: GPIO0@11
+            ROW3: GPIO0@15      COL3: GPIO0@31
+            ROW4: GPIO0@24      COL4: GPIO1@5
+            ROW5: GPIO0@19      COL5: GPI00@30
+	
+	* Funcionamiento display *
+	
+	Una imagen consiste en un array de 5 parejas de enteros sin signo. El primero de cada una contiene el conjunto de señales de control de las filas y columnas del display que se son manejados a través del GPIO0 (todas las filas, y las columnas 1, 2, 3 y 5) y, el segundo, las del GPIO1 (tan solo la columna 4).
+	
+	-- map_pixel(int x, int y) -> 
+	
+    -- void image_set(int x, int y, image img) -> altera los valores de img de tal forma que cuando se haga un image_show de esa imagen, aparezca encendido un LED en la posición indicada. 
+
+2. BOTONES
+	2.1 Botón A/B pulsado desde la última vez que se comprobó?
+	2.2 Espera a botón pulsado: normal -> problemilla: espera activa. En un SO haces un yield y esperas la interrupción, pero aquí hay que hacer spin sí o sí
+	2.3 Estado botón
+	...
+
+3. ACELERÓMETRO:
+	3.1 Esperar a cambio en la orientación. Recibe enum indicando el cambio que se quiere detectar (ALANTE-ATRÁS, IZDA.-DCHA, etc.). Retorna cuando se detecta el cambio
+	3.2 Obtener valores de aceleración: en una estructura (X,Y,Z) o cada valor por separado
+	3.3 Obtener valores de aceleración discretizados (DELANTE, ATRÁS, IZDA, DCHA)
+	...
+
+4. SENSOR DE TEMPERATURA:
+	4.1 Obtener valor de temperatura en grados Celsius
+	...
+
+5. SENSOR DE LUMINOSIDAD:
+	5.1 Obtener valor de luminosidad en lúmens
+	...
+
+6. BRÚJULA:
+	6.1 Obtener dirección discretizada (N,S,W,E)
+	6.2 Obtener dirección en grados
+	...
+
+7. BOTÓN TÁCTIL:
+	7.x Lo mismo que los botones mecánicos
+
+8. ALTAVOZ:
+	8.1 Reproducir tono durante un periodo de tiempo
+	8.2 Reproducir melodía, entendida como una secuencia (array) de tonos
+	...
+
+9. MICRÓFONO:
+	9.1 TODO: no sé qué capacidades tiene el micrófono
+
+10. RADIO:
+	10.1 Enviar mensaje: secuencia de bytes
+	10.2 Recibir mensaje: " " "
+	10.3 Configurar para emitir y recibir en una frecuencia determinada
+	10.4 TODO: Investigar capacidades de la radio
+
+11. PINES:	# TODO: Investigar capacidades de los pines, lecturas analógicas/digitales, interfaces conectadas a los pines (PWM, I2C, UART, SPI, etc.)...
+	11.1 Establecer valor de salida en el pin
+	11.2 Leer valor de entrada en el pin
+	...
+
+12. USB
+	12.1 Enviar secuencia de bytes por la interfaz serie
+	12.2 Leer interfaz serie
+	...
