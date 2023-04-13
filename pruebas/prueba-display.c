@@ -4,7 +4,7 @@ void
 main(int n)
 {
     display_cambia_intensidad(INT_BAJA);
-
+ 
     while (1)
     {
         imagen_t prueba = {{0,1,0,1,0},{1,0,1,0,1},{0,1,0,1,0},{1,0,1,0,1},{0,1,0,1,0}};

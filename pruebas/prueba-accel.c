@@ -1,5 +1,7 @@
 #include "../ubit/ubit.h"
+#include <math.h>
 
+/* NOTE: busca dispositivos mapeados en el bus I2C interno de la placa */
 static void i2c_map(void)
 {
     static char *hex = "0123456789abcdef";
@@ -25,19 +27,57 @@ static void i2c_map(void)
     }
 }
 
+/* FIXME: estas funciones deberían estar en acelerometro.c, pero no encuentro la
+ * manera de incluir la librería matemática en ubit.a */
+
+/**
+ * @brief Proporciona el valor de la inclinación en el eje X, en el rango
+ * [-90, 90]. Con la placa posicionada de forma paralela al suelo
+ * 
+ * @return float La inclinación en el eje X
+ */
+float
+inclinacion_eje_x() {
+    float d = atan((float)acelerometro_lectura_z() /
+                   (float)acelerometro_lectura_x()) * RAD_A_GRAD;
+    return (d < 0) ? -90 - d : 90 - d;
+    /* NOTE: atan() retorna un valor en radianes */
+}
+
+/**
+ * @brief Proporciona el valor de la inclinación en el eje Y, en el rango
+ * [-90, 90].
+ * 
+ * @return float La inclinación en el eje Y
+ */
+float
+inclinacion_eje_y() {
+    float d = atan((float)acelerometro_lectura_z() /
+                   (float)acelerometro_lectura_y()) * RAD_A_GRAD;
+    return (d < 0) ? -90 - d : 90 - d;
+}
+
 void
 main(int n)
 {
     //microbit_inicializa_hardware(); /* FIXME: no se puede hacer, porque salta error de hardware en la placa */
     acelerometro_inicializa();
-    int px, py, pz;
+
+    double gx, gy, gz;
 
     while (1) {
-        timer_delay(500);
-        px = acelerometro_lectura_x();
-        py = acelerometro_lectura_y();
-        pz = acelerometro_lectura_z();
-        printf("px=%d py=%d pz=%d\n\n", px, py, pz);
-        /* NOTE: el rango de valores proporcionados por el sensor va de -128 a 128, siendo 64 el valor obtenido en reposo (en promedio). El valor de aceleración real sería entonces: acel = lectura * 9.8 / 64 (m/s²) */
+        timer_delay(100);
+
+        /* NOTE: el rango de valores proporcionados por el sensor (en las
+         * pruebas realizadas) va de -128 a 128, siendo 64 el valor obtenido en
+         * reposo (en promedio), correspondiente con el valor de aceleración
+         * sobre la superficie terrestre */
+
+        gx = inclinacion_eje_x();
+        gy = inclinacion_eje_y();
+
+        display_enciende_LED(1, 1);
+
+        printf("px=%d py=%d pz=%d\tx=%d y=%d\n", acelerometro_lectura_x(), acelerometro_lectura_y(), acelerometro_lectura_z(), (int)gx, (int)gy);
     }
 }

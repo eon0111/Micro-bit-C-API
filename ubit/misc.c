@@ -15,31 +15,15 @@
  * @brief Esta función es el punto de entrada al código del usuario. Dicho
  * código no podrá ejecutar correctamente si no es como parte de un proceso de
  * Microbian.
- * Se incluye como parte del código de la librería para que los alumnos no tengan
- * que declararla en sus códigos, y puedan programar de la forma más parecida
- * posible a como lo vienen haciendo hasta ahora en la asignatura de Introducción
- * al Software, con una función principal main() más las funciones que ellos
- * declaren y definan.
+ * Se incluye como parte del código de la librería para que los alumnos no
+ * tengan que declararla en sus códigos, y puedan programar de la forma más
+ * parecida posible a como lo vienen haciendo hasta ahora en la asignatura de
+ * Introducción al Software, con una función principal main() más las funciones
+ * que ellos declaren y definan.
  * 
  */
 void
 init()
-{
-    microbit_inicializa_hardware();
-    start("MAIN", main, 0, STACK);
-}
-
-/**
- * @brief Wrapper para todas las rutinas de inicialización de los dispositivos
- * hardware manejados por la librería Microbian. TODO: quitar -> "es mucho más
- * cómo inicializar todo el hardware con una sola llamada, que tener que estar
- * incializando cada dispositivo cada vez que vayas a usarlo"
- * 
- * FIXME: me da que no va a quedar más remedio que hacer que llamen a las 
- * 
- */
-void
-microbit_inicializa_hardware()
 {
     /* NOTE: aún no sé bien si hay más rutinas de inicialización que reciban
      * parámetros pero, de haber más, esta función de inicialización podría
@@ -61,6 +45,7 @@ microbit_inicializa_hardware()
     i2c_init(I2C_EXTERNAL);
     
     display_init();
+    image_clear(imagen_actual_microbian);   /* NOTE: hay que dejar configurada la imagen inicialmente para que, cuando se hace en primer lugar una llamada a image_set() sobre la variable compartida, esta contenga ya todas las señales de control para LEDs tanto encendidos como apagados. De no hacerlo, el image_set() tan solo configuraría las señales de control para un único LED, y la imagen de Microbian estaría incompleta */
 
     /* Inicialización de los botones directamente a través de los registros del
      * GPIO, porque no hay una función de librería que lo haga explícitamente */
@@ -70,5 +55,19 @@ microbit_inicializa_hardware()
     radio_init();
     radio_group(GRUPO_RADIO);
 
-    //acelerometro_inicializa();    /* FIXME: por alguna razón que desconozco no se puede hacer la inicialización del acelerómetro desde fuera de un proceso de Microbian... */
+    start("MAIN", main, 0, STACK);
+}
+
+/**
+ * @brief Wrapper para todas las rutinas de inicialización de los dispositivos
+ * hardware manejados por la librería Microbian que no pueden ser inicializados
+ * desde fuera de un proceso de Microbian.
+ * 
+ */
+void
+microbit_inicializa_hardware()
+{
+    timer_delay(100);   /* NOTE: un pequeño delay para que le de tiempo a arrancar a la tarea de refresco del display y no nos de error al hacer operaciones sobre el display desde el proceso principal (main) */
+    acelerometro_inicializa();    /* FIXME: por alguna razón que desconozco no se puede hacer la inicialización del acelerómetro desde fuera de un proceso de Microbian... */
+    brujula_inicializa();
 }

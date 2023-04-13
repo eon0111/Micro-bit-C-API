@@ -61,10 +61,10 @@ static const unsigned img_col[] = {
 static unsigned map_pixel(int x, int y)
 {
     /* Each row is represented by two words for the two GPIO registers. */
-    unsigned col = img_col[x];  // NOTE: obtiene su mapeo de la columna X
+    unsigned col = img_col[x];          // NOTE: obtiene su mapeo de la columna X
     int index = 2*(4-y) + XPART(col);   // NOTE: con XPART(col) lo que hace es recuperar el bit que indica el puerto del GPIO, porque vuelve a hacer un shift de 5 bits hacia la dcha. Con el 2*(4-y) va generando los múltiplos de 2 en el rango [0, 8], que son 5 números, es decir 5 índices para algo que no sé qué es aún FIXME:
     int bit = YPART(col);               // NOTE: con YPART(col) lo que hace es recuperar el índice del pin dentro del puerto
-    return PAIR(index, bit);    // NOTE: retorna un entero compuesto, en su codificación binaria, por: puerto[b31-b6] y pin[b5-b0]
+    return PAIR(index, bit);            // NOTE: retorna un entero compuesto, en su codificación binaria, por: puerto[b31-b6] y pin[b5-b0]
     /* Could optimise to ((4-y) << 6) | img_col[x]. */
 }
 #endif
@@ -75,6 +75,14 @@ void image_set(int x, int y, image img)
     if (x < 0 || x >= 5 || y < 0 || y >= 5) return;
     unsigned p = map_pixel(x, y);   // NOTE: el mapeo que ha escogido es el siguiente: TODO:
     CLR_BIT(img[XPART(p)], YPART(p));   // NOTE: en el bit 5 va codificado el puerto del GPIO, 0 o 1, que es el primer parámetro de la macro CLR_BIT
+}
+
+/* NOTE: la librería no disponía de una función para apagar un LED en una imagen */
+void image_clear_led(int x, int y, image img)
+{
+    if (x < 0 || x >= 5 || y < 0 || y >= 5) return;
+    unsigned p = map_pixel(x, y);
+    SET_BIT(img[XPART(p)], YPART(p));
 }
 
 /* display_image is a shared variable between the client and the
@@ -100,10 +108,6 @@ void display_task(int dummy)
     GPIO0.DIRSET = LED_MASK0;
     GPIO1.DIRSET = LED_MASK1;
     
-    /* NOTE: antes tenía una función de inicialización desde donde hacía lo del
-     * setup de la intensidad, pero es mejor pasarle el valor de intensidad
-     * directamente a esta función de inicialización para poder deshacerme 
-     * completamente de la mía ("display_inicializa()")*/
     gpio_drive(ROW1, GPIO_DRIVE_S0H1);
     gpio_drive(ROW2, GPIO_DRIVE_S0H1);
     gpio_drive(ROW3, GPIO_DRIVE_S0H1);
@@ -134,6 +138,10 @@ void display_task(int dummy)
         GPIO1.OUTCLR = LED_MASK1;
         GPIO1.OUTSET = display_image[n+1];
         GPIO0.OUTSET = display_image[n];
+        /* NOTE: el funcionamiento de esta tarea puede resumirse en:
+         * 1. apaga todo
+         * 2. activa fila y columna para LED en posición x,y
+         * 3. repite */
         n += 2;
         if (n == 10) n = 0; /* NOTE: en cada iteración muestra una fila de la imagen */
 #endif

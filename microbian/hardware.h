@@ -990,14 +990,6 @@ typedef unsigned image[NIMG];
  * lógico bit a bit */
 /* NOTE: la macro "ROWx", que no "ROW" a secas, obtiene el conjunto de señales
  * de control para la fila que corresponda */
-/* NOTE: ejemplo: Se tiene la siguiente imagen ->
-
-    / 0 1 1 1 0 \   -> por cada fila se genera una pareja. En este caso: (0b)
-    | 1 0 1 0 1 |
-    | 1 1 0 1 1 |
-    | 1 0 1 0 1 |
-    \ 0 1 1 1 0 /
-*/
 
 #define __ROW(r, c1, c2, c3, c4, c5) \
     BIT(r) | (!c1<<28) | (!c2<<11) | (!c3<<31) | (!c5<<30), (!c4<<5)

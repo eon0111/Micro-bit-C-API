@@ -132,3 +132,4 @@ void display_init(void);
 extern const unsigned blank[];
 void image_clear(unsigned *img);
 void image_set(int x, int y, unsigned *img);
+void image_clear_led(int x, int y, unsigned *img);

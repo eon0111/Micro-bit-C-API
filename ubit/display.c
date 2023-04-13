@@ -9,18 +9,6 @@
 
 #include "ubit.h"
 
-/* El conjunto de señales que controlan el estado de los LEDs en Microbian */
-image imagen_actual_microbian;
-
-/* El conjunto de valores que indican el estado de los LEDs de forma comprensible
- * para el usuario */
-int imagen_actual_legible[DISPLAY_DIM][DISPLAY_DIM] = {};
-
-typedef struct {
-    int x;
-    int y
-} coordenada;
-
 /**
  * @brief Wrapper para la rutina de inicialización del proceso de refresco
  * del display, proporcionada por la librería Microbian.
@@ -38,8 +26,8 @@ display_cambia_intensidad(intensidad_t intensidad)
 
     /* NOTE: podría emplear sus constantes (GPIO_DRIVE_X@hardware.c), pero 
      * tendría que hacer un mapeo de la intensidad (enumerado) a cada constante,
-     * y este encima sería directo porque, por ejemplo, intensidad "INT_BAJA" sería
-     * el equivalente de GPIO_DRIVE_S0S1 */
+     * y este encima sería directo porque, por ejemplo, intensidad "INT_BAJA"
+     * sería el equivalente de GPIO_DRIVE_S0S1 */
     gpio_drive(ROW1, intensidad);
     gpio_drive(ROW2, intensidad);
     gpio_drive(ROW3, intensidad);
@@ -64,9 +52,6 @@ display_enciende_LED(int x, int y)
 
     /* Elabora el conjunto de señales que hacen que se encienda el LED */
     image_set(x, y, imagen_actual_microbian);
-
-    /* Actualiza el estado "legible" del display */
-    imagen_actual_legible[x][y] = 1;
 
     /* Actualiza el valor de la variable compartida de la librería Microbian
      * que guarda el estado de los LEDs del display
@@ -106,22 +91,13 @@ display_apaga_LED(int x, int y)
 {
     if (x < 0 || x >= DISPLAY_DIM || y < 0 || y >= DISPLAY_DIM) return -1;
 
-    image_clear(imagen_actual_microbian);
-    imagen_actual_legible[x][y] = 0;
+    /* NOTE: no tiene sentido apagar un LED directamente tocando el GPIO, porque
+     * la tarea de refresco te lo va a volver a encender si ese LED se encuentra
+     * encendido en la imagen que lee el proceso. Hay que tocar la imagen,
+     * generando en la posición a apagar las señales de control necesarias para
+     * ello */
 
-    /*
-     * La librería no implementa ninguna función que apague un LED. No obstante,
-     * esto puede lograrse a partir de la función de encendido, creando una 
-     * nueva imagen a partir del estado anterior a la modificación
-     */ 
-    int i, j;
-    for (i = 0; i < DISPLAY_DIM; i++)
-        for (j = 0; i < DISPLAY_DIM; j++)
-            if (imagen_actual_legible[j][i] && i != x && j != y)
-                image_set(i, j, imagen_actual_microbian);
-
-    // TODO: mirar para hacerlo directamente sin iterar ni nada, interactuando directamente con el GPIO
-
+    image_clear_led(x, y, imagen_actual_microbian);
     display_show(imagen_actual_microbian);
 
     return 0;
@@ -163,7 +139,7 @@ display_muestra_imagen(imagen_t img)
     for (i = 0; i < DISPLAY_DIM; i++)
         for (j = 0; j < DISPLAY_DIM; j++)
             if (img[i][j])
-                image_set(j, DISPLAY_DIM-i-1, imagen_actual_microbian);
+                image_set(j, DISPLAY_DIM-1-i, imagen_actual_microbian);
 
     display_show(imagen_actual_microbian);
 
@@ -192,22 +168,6 @@ display_muestra_secuencia(imagen_t seq[], int num_imgs, int delay_ms)
     }
 
     return 0;
-}
-
-/**
- * @brief Retorna el estado de un LED en el display.
- * 
- * @param x La coordenada en el eje de abscisas dentro del display
- * @param y La coordenada en el eje de ordenadas dentro del display
- * @return El estado del LED, encendido (1) o apagado (0), o -1 si el
- * valor de alguna coordenada está fuera del rango [0, 4] 
- */
-int
-display_estado_LED(int x, int y)
-{
-    if (0 <= x && x < DISPLAY_DIM && 0 <= y && y < DISPLAY_DIM)
-        return imagen_actual_legible[y][x];
-    return -1;
 }
 
 /* NOTE: mirando en la librería ([148-186]@microbian.c), me doy cuenta de que el SO tan sólo admite 3 procesos en cualquier estado */
