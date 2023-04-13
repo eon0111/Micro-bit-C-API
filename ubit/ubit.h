@@ -21,7 +21,7 @@ void microbit_inicializa_hardware();
 image imagen_actual_microbian;
 typedef enum {INT_BAJA, INT_MEDIA, INT_ALTA} intensidad_t;
 typedef int imagen_t[DISPLAY_DIM][DISPLAY_DIM];
-typedef struct { int x; int y} coordenada;
+typedef struct { int x; int y;} coordenada_t;
 int display_cambia_intensidad(intensidad_t i);
 int display_enciende_LED(int x, int y);
 int display_apaga_LED(int x, int y);

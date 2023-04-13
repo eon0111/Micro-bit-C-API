@@ -69,7 +69,7 @@ display_enciende_LED(int x, int y)
  * valor de alguna coordenada está fuera del rango [0, 4]
  */
 int
-display_enciende_LED_coordenada(coordenada c)
+display_enciende_LED_coordenada(coordenada_t c)
 {
     if (c.x < 0 || c.x >= DISPLAY_DIM || c.y < 0 || c.y >= DISPLAY_DIM) return -1;
 
