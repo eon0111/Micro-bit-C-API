@@ -30,20 +30,31 @@ int display_muestra_secuencia(imagen_t seq[], int num_imgs, int delay_ms);
 void display_limpia();
 
 /* botones.c */
-typedef enum {BOTON_A, BOTON_B} boton_t;
-void boton_A_espera_pulsacion();
-void boton_B_espera_pulsacion();
+/* TODO: ¿y si hago una única función que reciba un enumerado indicando el botón? */
+typedef enum {BOTON_A, BOTON_B, BOTON_LOGO, BOTON_0, BOTON_1, BOTON_2} boton_t;
+int boton_pulsado(boton_t b);
+int boton_espera_pulsacion(boton_t b);
 int boton_A_pulsado();
 int boton_B_pulsado();
+int boton_tactil_pulsado();
+int boton_tactil_0_pulsado();
+int boton_tactil_1_pulsado();
+int boton_tactil_2_pulsado();
+void boton_A_espera_pulsacion();
+void boton_B_espera_pulsacion();
+void boton_tactil_espera_pulsacion();
 
 /* radio.c */
 /* NOTE: casi que se pueden usar directamente las funciones de Microbian */
 /* TODO: probar Bluetooth */
 
 /* acelerometro.c */
+/* FIXME: por ahora las constantes están aqui para poder utilizarlas desde el
+ * ejemplo. Lo suyo es que tanto estas constantes como las funciones que uso
+ * en el ejemplo se pasen a acelerometro.c, cuando haya dado con la manera de
+ * incluir la librería matemática en mi librería */
 #define PI 3.14159265358979323846
 #define RAD_A_GRAD 180 / PI /* 360 / (2 * PI) */
-
 void acelerometro_inicializa();
 int acelerometro_lectura_x();
 int acelerometro_lectura_y();

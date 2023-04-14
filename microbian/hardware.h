@@ -84,6 +84,12 @@ argument to be a macro that expands the a 'position, width' pair. */
 
 /* TODO: Logo touch, mic power, mic input, speaker */
 
+/* Botones táctiles (el del logo y los de los pines de expansión) */
+#define TOUCH_BUTTON_LOGO DEVPIN(1,4)    /* NOTE: PIN4@GPIO1 */
+#define TOUCH_BUTTON_0 PAD0
+#define TOUCH_BUTTON_1 PAD1
+#define TOUCH_BUTTON_2 PAD2
+
 /* Interrupts */
 #define SVC_IRQ    -5
 #define PENDSV_IRQ -2

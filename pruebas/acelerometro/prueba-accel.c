@@ -1,4 +1,4 @@
-#include "../ubit/ubit.h"
+#include "../../ubit/ubit.h"
 #include <math.h>
 
 /* NOTE: busca dispositivos mapeados en el bus I2C interno de la placa */

@@ -1,4 +1,4 @@
-#include "../ubit/ubit.h"
+#include "../../ubit/ubit.h"
 
 void
 main(int n)

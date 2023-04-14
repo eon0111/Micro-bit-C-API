@@ -51,6 +51,10 @@ init()
      * GPIO, porque no hay una función de librería que lo haga explícitamente */
     gpio_connect(BUTTON_A);
     gpio_connect(BUTTON_B);
+    gpio_connect(TOUCH_BUTTON_LOGO);
+    gpio_connect(TOUCH_BUTTON_0);
+    gpio_connect(TOUCH_BUTTON_1);
+    gpio_connect(TOUCH_BUTTON_2);
 
     radio_init();
     radio_group(GRUPO_RADIO);

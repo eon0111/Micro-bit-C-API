@@ -25,10 +25,11 @@ do
     fi
 done
 
-flags="-mcpu=cortex-m4 -mthumb -O2 -ffreestanding -T ../microbian/nRF52833.ld"
+flags="-mcpu=cortex-m4 -mthumb -O2 -ffreestanding -T ../../microbian/nRF52833.ld"
 libs="-nostdlib -lgcc -lc"
 
-if arm-none-eabi-gcc $flags $@ ../ubit/ubit.a $libs # TODO: conseguir que funcione con -lubit
+if arm-none-eabi-gcc $flags $@ ../../ubit/ubit.a $libs # TODO: conseguir que funcione con -lubit
+                                                       # TODO: hacer lo del .deb para no tener que poner una ruta relativa a la librería y tenerla siempre localizada
 then
     arm-none-eabi-objcopy -O ihex $nombre_elf $nombre_elf.hex
     rm $nombre_elf

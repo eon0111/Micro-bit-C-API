@@ -1,4 +1,4 @@
-#include "../ubit/ubit.h"
+#include "../../ubit/ubit.h"
 
 enum {NORTE, SUR, ESTE, OESTE};
 
