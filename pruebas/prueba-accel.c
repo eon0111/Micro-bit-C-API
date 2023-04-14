@@ -60,8 +60,7 @@ inclinacion_eje_y() {
 void
 main(int n)
 {
-    //microbit_inicializa_hardware(); /* FIXME: no se puede hacer, porque salta error de hardware en la placa */
-    acelerometro_inicializa();
+    microbit_inicializa_hardware();
 
     double gx, gy, gz;
 
@@ -75,8 +74,6 @@ main(int n)
 
         gx = inclinacion_eje_x();
         gy = inclinacion_eje_y();
-
-        display_enciende_LED(1, 1);
 
         printf("px=%d py=%d pz=%d\tx=%d y=%d\n", acelerometro_lectura_x(), acelerometro_lectura_y(), acelerometro_lectura_z(), (int)gx, (int)gy);
     }

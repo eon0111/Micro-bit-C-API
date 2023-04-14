@@ -9,12 +9,12 @@ main(int n)
 
     while (1)
     {
-        if (boton_A_pulsado() == 1)
+        if (boton_A_pulsado())
         {
             imagen_t prueba = {{0,1,1,1,0},{1,0,0,0,1},{1,1,1,1,1},{1,0,0,0,1},{1,0,0,0,1}};
             display_muestra_imagen(prueba);
         }
-        else if (boton_B_pulsado() == 1)
+        else if (boton_B_pulsado())
         {
             imagen_t prueba2 = {{1,1,1,1,0},{1,0,0,0,1},{1,1,1,1,0},{1,0,0,0,1},{1,1,1,1,0}};
             display_muestra_imagen(prueba2);
