@@ -30,7 +30,6 @@ int display_muestra_secuencia(imagen_t seq[], int num_imgs, int delay_ms);
 void display_limpia();
 
 /* botones.c */
-/* TODO: ¿y si hago una única función que reciba un enumerado indicando el botón? */
 typedef enum {BOTON_A, BOTON_B, BOTON_LOGO, BOTON_0, BOTON_1, BOTON_2} boton_t;
 int boton_pulsado(boton_t b);
 int boton_espera_pulsacion(boton_t b);
@@ -54,8 +53,9 @@ void boton_tactil_espera_pulsacion();
  * en el ejemplo se pasen a acelerometro.c, cuando haya dado con la manera de
  * incluir la librería matemática en mi librería */
 #define PI 3.14159265358979323846
-#define RAD_A_GRAD 180 / PI /* 360 / (2 * PI) */
+#define RAD_A_GRAD 180 / PI /* = 360 / (2 * PI) */
 void acelerometro_inicializa();
+/* FIXME: realmente, creo que con las funciones de inclinación sería suficiente */
 int acelerometro_lectura_x();
 int acelerometro_lectura_y();
 int acelerometro_lectura_z();
@@ -65,3 +65,12 @@ void brujula_inicializa();
 int brujula_lectura_x();
 int brujula_lectura_y();
 int brujula_lectura_z();
+
+/* buzzer.c */
+#define NEGRA       1000
+#define CORCHEA     500
+#define SEMICORCHEA 250
+typedef enum {DO_3, RE_3, MI_3, FA_3, SOL_3, LA_3, SI_3, DO_4, RE_4, MI_4, FA_4,
+              SOL_4, LA_4, SI_4, DO_5} nota_t;
+typedef struct { nota_t nota; int duracion_ms; } tono_t;
+void buzzer_reproduce_nota(nota_t n, int t_ms);

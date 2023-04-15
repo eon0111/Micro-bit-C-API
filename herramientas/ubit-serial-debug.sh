@@ -14,4 +14,6 @@ then
     done
 fi
 
+# FIXME: realmente con hacer $ cat /dev/ttyACM0 haces lo mismo, a no ser que quieras enviar algo a la placa
+
 screen /dev/ttyACM0 9600

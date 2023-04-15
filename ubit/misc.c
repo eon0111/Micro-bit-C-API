@@ -25,12 +25,6 @@
 void
 init()
 {
-    /* NOTE: aún no sé bien si hay más rutinas de inicialización que reciban
-     * parámetros pero, de haber más, esta función de inicialización podría
-     * recibir una estructura que contenga todos los parámetros, comprobarlos,
-     * y pasarlos a las rutinas de microbian. Entonces esta función retornaría
-     * un valor en función de la terminación (error/correcta) */
-
     serial_init();
 
     /* NOTE: La tarea de refresco del display requiere que el timer se encuentre
@@ -44,17 +38,22 @@ init()
     i2c_init(I2C_INTERNAL);
     i2c_init(I2C_EXTERNAL);
     
+    /* Inicialización de la matriz de LEDs */
     display_init();
     image_clear(imagen_actual_microbian);   /* NOTE: hay que dejar configurada la imagen inicialmente para que, cuando se hace en primer lugar una llamada a image_set() sobre la variable compartida, esta contenga ya todas las señales de control para LEDs tanto encendidos como apagados. De no hacerlo, el image_set() tan solo configuraría las señales de control para un único LED, y la imagen de Microbian estaría incompleta */
 
     /* Inicialización de los botones directamente a través de los registros del
-     * GPIO, porque no hay una función de librería que lo haga explícitamente */
+     * GPIO, porque no hay una función de librería que lo haga explícitamente.
+     * NOTE: Se configuran como entrada en el registro de configuración del GPIO */
     gpio_connect(BUTTON_A);
     gpio_connect(BUTTON_B);
     gpio_connect(TOUCH_BUTTON_LOGO);
     gpio_connect(TOUCH_BUTTON_0);
     gpio_connect(TOUCH_BUTTON_1);
     gpio_connect(TOUCH_BUTTON_2);
+
+    /* Inicialización del zumbador piezoeléctrico */
+    gpio_dir(BUZZER, 1);
 
     radio_init();
     radio_group(GRUPO_RADIO);

@@ -82,13 +82,16 @@ argument to be a macro that expands the a 'position, width' pair. */
 #define I2C_EXTERNAL 1
 #define N_I2C 2
 
-/* TODO: Logo touch, mic power, mic input, speaker */
+/* TODO: mic power, mic input, speaker */
 
 /* Botones táctiles (el del logo y los de los pines de expansión) */
 #define TOUCH_BUTTON_LOGO DEVPIN(1,4)    /* NOTE: PIN4@GPIO1 */
 #define TOUCH_BUTTON_0 PAD0
 #define TOUCH_BUTTON_1 PAD1
 #define TOUCH_BUTTON_2 PAD2
+
+/* Zumbador piezoeléctrico */
+#define BUZZER DEVPIN(0,0)
 
 /* Interrupts */
 #define SVC_IRQ    -5
