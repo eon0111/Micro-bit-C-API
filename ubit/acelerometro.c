@@ -9,7 +9,6 @@
  */
 
 #include "ubit.h"
-// FIXME: #include <math.h>
 
 #define ACC 0x19    /* La dirección del acelerómetro en el bus I2C -- NOTE: (PDF-accel@p39) */
 #define MAG 0x1E    /* La dirección de la brújula en el bus I2C    -- NOTE: (PDF-accel@p39) */
@@ -26,10 +25,20 @@
 #define MAG_OUT_Y     0x6A  /* Valor del campo magnético en el eje Y */
 #define MAG_OUT_Z     0x6C  /* Valor del campo magnético en el eje Z */
 
+/* Constantes para el cálculo de la inclinación en grados */
+#define PI 3.14159265358979323846
+#define RAD_A_GRAD 180 / PI /* = 360 / (2 * PI) */
+#define abs(x) (x < 0) ? -x : x
+
 /* NOTE: el sensor se configura para que trabaje en modo de "bajo consumo", es
  * decir, que proporcionará datos de aceleración con una resolución de 8 bits ->
  * PDF-accel@p27[tabla-14] */
 
+/**
+ * @brief Configura el acelerómetro para que comience a realizar mediciones de
+ * la aceleración en los ejes X, Y y Z.
+ * 
+ */
 void acelerometro_inicializa()
 {
     /* NOTE:  0b01001111 -> 0100 = 50Hz; 1111 = habilita modo de bajo consumo y
@@ -140,4 +149,67 @@ brujula_lectura_z()
     //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
     //return buf[5];
+}
+
+/**
+ * @brief Retorna la potencia 'e' de un número 'b'.
+ * 
+ * @param b la base
+ * @param e el exponente
+ * @return float b elevado a e
+ */
+static float
+pow(float b, float e)
+{
+    int n, t = abs(e);
+    float r = 1.0;
+    for (n = 0; n < t; n++)
+        r = r * b;
+    return (e > 0) ? r : 1 / r;
+}
+
+/**
+ * @brief Calcula el arcotangente de un valor numérico en base a la serie de
+ * Taylor que aproxima dicha función. Con 10 términos de la serie se consigue
+ * una precisión aceptable.
+ * 
+ * @param x el valor cuyo arcotangente quiere conocerse
+ * @return float el arcotangente (en radianes) del valor indicado
+ */
+static float
+atan(float x)
+{
+    int n;
+    float x2 = abs(x), r = 0.0, c = (x2 < 1) ? 1 : -1, c2 = (x < 0) ? -1 : 1;
+
+    for (n = 0; n < 10; n++)
+        r += pow(-1,n) * pow(x2,c*(1+2*n)) / (1+2*n);
+
+    return (x2 < 1) ? c2 * r : c2 * ((PI / 2) - r);
+}
+
+/**
+ * @brief Proporciona el valor de la inclinación en el eje X, en el rango
+ * [-90, 90]. Con la placa posicionada de forma paralela al suelo
+ * 
+ * @return float La inclinación en el eje X
+ */
+float
+inclinacion_eje_x() {
+    float d = atan((float)acelerometro_lectura_z() /
+                   (float)acelerometro_lectura_x()) * RAD_A_GRAD;
+    return (d < 0) ? -90 - d : 90 - d;
+}
+
+/**
+ * @brief Proporciona el valor de la inclinación en el eje Y, en el rango
+ * [-90, 90].
+ * 
+ * @return float La inclinación en el eje Y
+ */
+float
+inclinacion_eje_y() {
+    float d = atan((float)acelerometro_lectura_z() /
+                   (float)acelerometro_lectura_y()) * RAD_A_GRAD;
+    return (d < 0) ? -90 - d : 90 - d;
 }
