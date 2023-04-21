@@ -1,6 +1,6 @@
 /**
  * @file ubit.h
- * @author Noe Ruano Gutierrez (nrg916@alumnos.unican.es)   // FIXME: quitar cuando pongas el repo público (cambiar, limpiar repo y resubir)
+ * @author Noe Ruano Gutierrez (nrg916@alumnos.unican.es)
  * @brief 
  * @version 0.1
  * @date TODO:
@@ -12,8 +12,9 @@
 #include "../microbian/lib.h"
 
 /* misc.c */
-void main(int n);   // NOTE: aquí va la cabecera de la función principal
+void main(int n);
 void microbit_inicializa_hardware();
+int termometro_lectura();
 
 /* display.c */
 #define DISPLAY_DIM 5
@@ -48,19 +49,13 @@ void boton_tactil_espera_pulsacion();
 /* TODO: probar Bluetooth */
 
 /* acelerometro.c */
-/* FIXME: por ahora las constantes están aqui para poder utilizarlas desde el
- * ejemplo. Lo suyo es que tanto estas constantes como las funciones que uso
- * en el ejemplo se pasen a acelerometro.c, cuando haya dado con la manera de
- * incluir la librería matemática en mi librería */
-#define PI 3.14159265358979323846
-#define RAD_A_GRAD 180 / PI /* = 360 / (2 * PI) */
 void acelerometro_inicializa();
 /* FIXME: realmente, creo que con las funciones de inclinación sería suficiente */
 int acelerometro_lectura_x();
 int acelerometro_lectura_y();
 int acelerometro_lectura_z();
-// FIXME: float inclinacion_eje_x();
-// FIXME: float inclinacion_eje_y();
+float inclinacion_eje_x();
+float inclinacion_eje_y();
 void brujula_inicializa();
 int brujula_lectura_x();
 int brujula_lectura_y();
