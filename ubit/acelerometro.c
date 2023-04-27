@@ -138,7 +138,7 @@ brujula_lectura_y()
 {
     //signed char buf[6];
     //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
-    unsigned int lectura = i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
+    //unsigned int lectura = i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
 
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
     //return buf[3];
