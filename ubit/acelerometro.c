@@ -19,11 +19,11 @@
 #define ACC_OUT_Y     0x2A  /* Valor de aceleración en el eje Y */
 #define ACC_OUT_Z     0x2C  /* Valor de aceleración en el eje Z */
 
-#define MAG_CTRL_REG1 0x60  /* Registro de control del magnetómetro */
-#define MAG_CTRL_REG2 0x61  /* Otro registro de control (activación cancelación de offset) */
-#define MAG_OUT_X     0x68  /* Valor del campo magnético en el eje X */
-#define MAG_OUT_Y     0x6A  /* Valor del campo magnético en el eje Y */
-#define MAG_OUT_Z     0x6C  /* Valor del campo magnético en el eje Z */
+#define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
+#define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
+#define MAG_OUT_X   0x68    /* Valor del campo magnético en el eje X */
+#define MAG_OUT_Y   0x6A    /* Valor del campo magnético en el eje Y */
+#define MAG_OUT_Z   0x6C    /* Valor del campo magnético en el eje Z */
 
 /* Constantes para el cálculo de la inclinación en grados */
 #define PI 3.14159265358979323846
@@ -138,6 +138,8 @@ brujula_lectura_y()
 {
     //signed char buf[6];
     //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
+    unsigned int lectura = i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
+
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
     //return buf[3];
 }

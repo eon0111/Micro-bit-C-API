@@ -1,5 +1,4 @@
 #include "../../ubit/ubit.h"
-#include <math.h>
 
 /* NOTE: busca dispositivos mapeados en el bus I2C interno de la placa */
 static void i2c_map(void)
@@ -29,33 +28,6 @@ static void i2c_map(void)
 
 /* FIXME: estas funciones deberían estar en acelerometro.c, pero no encuentro la
  * manera de incluir la librería matemática en ubit.a */
-
-/**
- * @brief Proporciona el valor de la inclinación en el eje X, en el rango
- * [-90, 90]. Con la placa posicionada de forma paralela al suelo
- * 
- * @return float La inclinación en el eje X
- */
-float
-inclinacion_eje_x() {
-    float d = atan((float)acelerometro_lectura_z() /
-                   (float)acelerometro_lectura_x()) * RAD_A_GRAD;
-    return (d < 0) ? -90 - d : 90 - d;
-    /* NOTE: atan() retorna un valor en radianes */
-}
-
-/**
- * @brief Proporciona el valor de la inclinación en el eje Y, en el rango
- * [-90, 90].
- * 
- * @return float La inclinación en el eje Y
- */
-float
-inclinacion_eje_y() {
-    float d = atan((float)acelerometro_lectura_z() /
-                   (float)acelerometro_lectura_y()) * RAD_A_GRAD;
-    return (d < 0) ? -90 - d : 90 - d;
-}
 
 void
 main(int n)

@@ -9,10 +9,16 @@
 
 #include "ubit.h"
 
-
 unsigned int periodo_us[] = {3822, 3405, 3033, 2863, 2551, 2272, 2024, 1911,
                              1702, 1516, 1431, 1275, 1136, 1012, 955};
 
+/**
+ * @brief Reproduce un tono de frecuencia igual al inverso del periodo
+ * correspondiente a la nota "n" indicada, durante t_ms milisegundos.
+ * 
+ * @param n le nota a reproducir
+ * @param t_ms la duración de la nota
+ */
 void
 buzzer_reproduce_nota(nota_t n, int t_ms)
 {

@@ -11,6 +11,14 @@
 
 #define GRUPO_RADIO 1
 
+/* Control del termómetro del NRF52833 */
+#define TEMP_BASE       0x4000C000  /* NOTE: pdfNRF@p425 */
+#define TEMP_TASK_START 0x0
+#define TEMP_DATA       0x508
+volatile int *temp_base = (volatile int *)TEMP_BASE;
+volatile int *temp_task_start = (volatile int *)(TEMP_BASE + TEMP_TASK_START);
+volatile int *temp_data = (volatile int *)(TEMP_BASE + TEMP_DATA);
+
 /**
  * @brief Esta función es el punto de entrada al código del usuario. Dicho
  * código no podrá ejecutar correctamente si no es como parte de un proceso de
@@ -73,4 +81,16 @@ microbit_inicializa_hardware()
     timer_delay(100);   /* NOTE: un pequeño delay para que le de tiempo a arrancar a la tarea de refresco del display y no nos de error al hacer operaciones sobre el display desde el proceso principal (main) */
     acelerometro_inicializa();    /* FIXME: por alguna razón que desconozco no se puede hacer la inicialización del acelerómetro desde fuera de un proceso de Microbian... */
     brujula_inicializa();
+}
+
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
+int
+termometro_lectura()
+{
+    *temp_task_start = 1;
+    return *temp_data;
 }

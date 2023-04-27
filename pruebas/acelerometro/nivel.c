@@ -30,6 +30,6 @@ main(int n)
         display_limpia();
         display_enciende_LED(p_x, p_y);
 
-        timer_delay(500);
+        timer_delay(100);
     }
 }
