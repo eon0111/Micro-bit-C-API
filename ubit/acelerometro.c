@@ -14,18 +14,18 @@
 #define MAG 0x1E    /* La dirección de la brújula en el bus I2C    -- NOTE: (PDF-accel@p39) */
 
 /* NOTE: Direcciones -> PDF-accel@p43 */
-#define ACC_CTRL_REG1 0x20  /* Registro de control del acelerómetro */
-#define ACC_OUT_X     0x28  /* Valor de aceleración en el eje X */
-#define ACC_OUT_Y     0x2A  /* Valor de aceleración en el eje Y */
-#define ACC_OUT_Z     0x2C  /* Valor de aceleración en el eje Z */
+#define ACC_CTRL_REG1   0x20  /* Registro de control del acelerómetro */
+#define ACC_OUT_X       0x29  /* Valor de aceleración en el eje X */
+#define ACC_OUT_Y       0x2B  /* Valor de aceleración en el eje Y */
+#define ACC_OUT_Z       0x2D  /* Valor de aceleración en el eje Z */
 
 #define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
 #define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
-#define MAG_OUT_X   0x68    /* Valor del campo magnético en el eje X */
-#define MAG_OUT_Y   0x6A    /* Valor del campo magnético en el eje Y */
-#define MAG_OUT_Z   0x6C    /* Valor del campo magnético en el eje Z */
+#define MAG_OUT_X       0x68    /* Valor del campo magnético en el eje X */
+#define MAG_OUT_Y       0x6A    /* Valor del campo magnético en el eje Y */
+#define MAG_OUT_Z       0x6C    /* Valor del campo magnético en el eje Z */
 
-/* Constantes para el cálculo de la inclinación en grados */
+/* Constantes para el cálculo del valor de la inclinación en grados */
 #define PI 3.14159265358979323846
 #define RAD_A_GRAD 180 / PI /* = 360 / (2 * PI) */
 #define abs(x) (x < 0) ? -x : x
@@ -41,13 +41,14 @@
  */
 void acelerometro_inicializa()
 {
-    /* NOTE:  0b01001111 -> 0100 = 50Hz; 1111 = habilita modo de bajo consumo y
-     * activa los tres ejes X,Y y Z -> PDF-accel@p47 */
+    /* NOTE:  0b01001111 -> 0100 = 50Hz; 1111 = habilita modo de bajo consumo
+     * (lecturas de 8 bits) y activa los tres ejes X,Y y Z -> PDF-accel@p47 */
     i2c_write_reg(I2C_INTERNAL, ACC, ACC_CTRL_REG1, 0x4f);
+    /* NOTE: no he encontrado nada en la documentación que lo indique explícitamente,
+     * pero deduzco que los registros de datos L y H contengan, respectivamente,
+     * los 8 MSBs y 8 LSBs del dato leído, a pesar de la incoherencia en el
+     * nombramiento de los registros...  */
 }
-
-/* FIXME: he probado con i2c_read_reg para sacar cada valor leyendo cada registro
- * por separado, pero sólo lee ceros */
 
 /**
  * @brief Obtiene el valor de la aceleración en el eje X, codificado como un
@@ -58,20 +59,13 @@ void acelerometro_inicializa()
 int
 acelerometro_lectura_x()
 {
-    signed char buf[6];
     /* FIXME: no entiendo el por qué de hacer que el parámetro cmd sea
-     * 0x28 | 0x80 = 0xA8. Yo entiendo que en cmd tiene que ir la dirección del
-     * registro que quieres leer, seguida del bit de lectura/escritura, no?? */
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) buf, 6);
-    return buf[1];
-}
-
-int
-acelerometro_lectura_x_2()
-{
-    signed char buf[6];
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) buf, 6);
-    return buf[1];
+     * 0x28 | 0x80 = 0xA8. Podría ser que se esté incluyendo el bit de "start"
+     * como parte del "comando" (?) */
+    signed char tmp;
+    /* NOTE: Podría haber utilizado i2c_read_reg(), pero tampoco tiene mucho sentido, puesto que esa función por dentro va a hacer lo mismo que se hace en la línea siguiente */
+    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) &tmp, 1);
+    return tmp;
 }
 
 /**
@@ -83,9 +77,9 @@ acelerometro_lectura_x_2()
 int
 acelerometro_lectura_y()
 {
-    signed char buf[6];
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) buf, 6);
-    return buf[3];
+    signed char buf[1];
+    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Y|0x80, (byte *) buf, 1);
+    return buf[0];
 }
 
 /**
@@ -97,16 +91,17 @@ acelerometro_lectura_y()
 int
 acelerometro_lectura_z()
 {
-    signed char buf[6];
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) buf, 6);
-    return buf[5];
+    signed char buf[1];
+    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Z|0x80, (byte *) buf, 1);
+    return buf[0];
 }
 
 void
 brujula_inicializa()
 {
     /* 10011000 -> b8: habilita compensación de temperatura;
-     *             b5: modo bajo consumo; b4-3: 50MHz;
+     *             b5: modo bajo consumo;
+     *             b4-3: 50MHz;
      *             b2-1: modo de medición contínua
      * NOTE: PDF-accel@p61-62 */
     i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x90);
@@ -119,10 +114,7 @@ brujula_inicializa()
 int
 brujula_lectura_x()
 {
-    //signed char buf[6];
-    //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
-    //return buf[1];
 }
 
 int
@@ -136,21 +128,13 @@ brujula_lectura_x_2()
 int
 brujula_lectura_y()
 {
-    //signed char buf[6];
-    //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
-    //unsigned int lectura = i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
-
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
-    //return buf[3];
 }
 
 int
 brujula_lectura_z()
 {
-    //signed char buf[6];
-    //i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
-    //return buf[5];
 }
 
 /**
