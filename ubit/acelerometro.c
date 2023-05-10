@@ -77,9 +77,9 @@ acelerometro_lectura_x()
 int
 acelerometro_lectura_y()
 {
-    signed char buf[1];
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Y|0x80, (byte *) buf, 1);
-    return buf[0];
+    signed char tmp;
+    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Y|0x80, (byte *) &tmp, 1);
+    return tmp;
 }
 
 /**
@@ -91,9 +91,9 @@ acelerometro_lectura_y()
 int
 acelerometro_lectura_z()
 {
-    signed char buf[1];
-    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Z|0x80, (byte *) buf, 1);
-    return buf[0];
+    signed char tmp;
+    i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_Z|0x80, (byte *) &tmp, 1);
+    return tmp;
 }
 
 void
@@ -104,7 +104,7 @@ brujula_inicializa()
      *             b4-3: 50MHz;
      *             b2-1: modo de medición contínua
      * NOTE: PDF-accel@p61-62 */
-    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x90);
+    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x88);
 
     /* 00000010 -> b2: habilita la cancelación de offset
      * NOTE: PDF-accel@p23-63 */
@@ -118,11 +118,11 @@ brujula_lectura_x()
 }
 
 int
-brujula_lectura_x_2()
+brujula_lectura_x2()
 {
     signed char buf[6];
     i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
-    return buf[1];
+    return buf[0];
 }
 
 int

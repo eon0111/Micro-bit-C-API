@@ -15,6 +15,10 @@ static int RADIO_TASK;
 
 #define FREQ 7                  /* Frequency 2407 MHz */
 
+#define BLE_CH_37   2   /* Advertising channel no. 37 @ 2402 MHz */
+#define BLE_CH_38   26  /* Advertising channel no. 37 @ 2402 MHz */
+#define BLE_CH_39   80  /* Advertising channel no. 37 @ 2402 MHz */
+
 /* We use a packet format that agrees with the standard micro:bit
 runtime.  That means prefixing the packet with three bytes (version,
 group, protocol) and counting these three in the length: the STATLEN
