@@ -8,6 +8,7 @@
  */
 
 #include "ubit.h"
+#include "sprites.h"
 
 /**
  * @brief Wrapper para la rutina de inicialización del proceso de refresco
@@ -53,7 +54,7 @@ display_enciende_LED(int x, int y)
     /* Elabora el conjunto de señales que hacen que se encienda el LED */
     image_set(x, y, imagen_actual_microbian);
 
-    /* Actualiza el valor de la variable compartida de la librería Microbian
+    /* NOTE: Actualiza el valor de la variable compartida de la librería Microbian
      * que guarda el estado de los LEDs del display
      * (display_image@display.c[86]) */
     display_show(imagen_actual_microbian);
@@ -170,4 +171,64 @@ display_muestra_secuencia(imagen_t seq[], int num_imgs, int delay_ms)
     return 0;
 }
 
-/* NOTE: mirando en la librería ([148-186]@microbian.c), me doy cuenta de que el SO tan sólo admite 3 procesos en cualquier estado */
+/**
+ * @brief Retorna la longitud de un string.
+ * 
+ * @param str El string
+ * @return int La longitud del string
+ */
+static int
+strlen(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0') i++;
+    return i;
+}
+
+/**
+ * @brief Retorna un puntero a la codificación binaria (en el array de sprites)
+ * correspondiente al carácter que se pasa como parámetro.
+ * 
+ * @param c El carácter cuya codificación quiere obtenerse
+ * @return char* El puntero al string que contiene la codificación
+ */
+char *char2codi(char c)
+{
+	if (c < '!' || c > '_')
+		return -1;
+	return sprites[(int)c - 33];
+}
+
+/**
+ * @brief Convierte la codificación binaria en formato de string de un carácter
+ * a su equivalente imagen de ubit.
+ * 
+ * @param str La codificación a convertir
+ * @param resultado La estructura cuyo campo "imagen" contendrá el resultado de
+ * la conversión
+ * @return int -1 si el string tiene un tamaño distinto del número de píxeles en
+ * el display de la placa (25), o 0 en caso de una terminación correcta
+ */
+int
+bin2imagen_t(char *str, imagen_t_wrapper *resultado)
+{
+    int i, j;
+
+    if (strlen(str) != DISPLAY_DIM * DISPLAY_DIM) return -1;
+
+    for (i = 0; i < DISPLAY_DIM; i++)
+        for (j = 0; j < DISPLAY_DIM; j++)
+            switch (str[i * DISPLAY_DIM + j])
+            {
+                case '0':
+                    resultado->imagen[i][j] = 0;
+                    break;
+                case '1':
+                    resultado->imagen[i][j] = 1;
+                    break;
+                default:
+                    return -1;
+            }
+
+    return 0;
+}

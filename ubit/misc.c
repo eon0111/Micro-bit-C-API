@@ -10,6 +10,7 @@
 #include "ubit.h"
 
 #define GRUPO_RADIO 1
+#define DISPLAY_DIM 5
 
 /* NOTE: Según el manual de la arquitectura, el valor leído del registro de
  * datos del sensor de temperatura indica el valor de dicha temperatura, pero
@@ -93,9 +94,9 @@ microbit_inicializa_hardware()
 }
 
 /**
- * @brief 
+ * @brief Obtiene el valor de temperatura leído por el probe del microcontrolador.
  * 
- * @return int 
+ * @return int Una aproximación de la temperatura ambiental
  */
 float
 termometro_lectura()

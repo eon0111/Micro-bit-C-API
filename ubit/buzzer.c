@@ -18,6 +18,7 @@ unsigned int periodo_us[] = {3822, 3405, 3033, 2863, 2551, 2272, 2024, 1911,
  * 
  * @param n le nota a reproducir
  * @param t_ms la duración de la nota
+ * 
  */
 void
 buzzer_reproduce_nota(nota_t n, int t_ms)
