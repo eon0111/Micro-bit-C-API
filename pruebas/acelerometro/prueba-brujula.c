@@ -1,4 +1,4 @@
-#include "../../ubit/ubit.h"
+#include <ubit.h>
 #include <math.h>
 
 enum {NORTE, SUR, ESTE, OESTE};
@@ -18,7 +18,7 @@ imagen_t p_card[] = {{{1,0,0,0,1},{1,1,0,0,1},{1,0,1,0,1},{1,0,0,1,1},{1,0,0,0,1
 float
 orientacion()
 {
-    return atan((float)brujula_lectura_y() / (float)brujula_lectura_x());
+    return atan((float)brujula_lectura_y() / (float)brujula_lectura_x())*180/3.1416;
 }
 
 int
@@ -54,6 +54,6 @@ main(int n)
         b_y = brujula_lectura_y();
         b_z = brujula_lectura_z();
 
-        printf("b_x=%d b_y=%d b_z=%d orientacion: %d\n", b_x, b_y, b_z, (int)orientacion());
+        printf("b_x=%d b_y=%d b_z=%d orientacion: %d\n", b_x, b_y, b_z, (int)orientacion()+45);
     }
 }

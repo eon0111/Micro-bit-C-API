@@ -1,11 +1,12 @@
-# Author: Noe Ruano Gutierrez
-
 #!/bin/bash
 
-MSJ_NO_ROOT="microtools: error: debe ejecutar la herramienta con privilegios de superusuario\n"
-MSJ_ERR_NO_HEX="microtools: error: no se indicó el fichero a cargar\n"
-MSJ_ESPERA="microtools: esperando conexión con Micro:bit\n"
-MSJ_FIN="microtools: carga completada!!\n"
+# Autor: Noé Ruano Gutiérrez
+
+MSJ_NO_ROOT="ubit-load: error: debe ejecutar la herramienta con privilegios de superusuario\n"
+MSJ_ERR_NO_HEX="ubit-load: error: no se indicó el fichero a cargar\n"
+MSJ_ERR_BAD_EXT="ubit-load: error: el ejecutable no tiene la extensión adecuada (.hex)\n"
+MSJ_ESPERA="ubit-load: esperando conexión con Micro:bit\n"
+MSJ_FIN="ubit-load: carga completada!!\n"
 
 TMP_DIR="/mnt/microbit"
 
@@ -21,10 +22,10 @@ if [ -z "$1" ]
 then
     printf "$MSJ_ERR_NO_HEX"
     exit
-# TODO: si se quiere comprobar al menos la extensión del fichero
-#else if [ -z "$(grep .hex \<(echo $1))" ];
-#then
-#    printf "$MSJ_ERR_BAD_EXT"
+elif [ -z "$(echo $1 | grep .hex)" ]
+then
+    printf "$MSJ_ERR_BAD_EXT"
+    exit
 fi
 
 # Espera a que se conecte el Micro:bit (lectura de etiquetas en los sistemas de ficheros detectados)

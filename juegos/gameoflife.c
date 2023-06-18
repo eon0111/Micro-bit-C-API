@@ -1,4 +1,4 @@
-#include "../../ubit/ubit.h"
+#include <ubit.h>
 
 #define DIM 5
 

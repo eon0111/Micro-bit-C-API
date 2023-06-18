@@ -1,4 +1,4 @@
-#include "../../ubit/ubit.h"
+#include <ubit.h>
 
 #define DIM     5
 #define INCL    5
@@ -77,6 +77,8 @@ main (int n)
             else if(incl_y < -INCL && posicion_jugador.y + 1 < DIM &&   /* Inclinación hacia ARRIBA */
                     !niveles[i]->laberinto[DIM - posicion_jugador.y - 2][posicion_jugador.x])
                 posicion_jugador.y++;
+
+            // TODO: refactorizar. Detallar los pseudocódigos de cada fase de la práctica y lo que se va aprendiendo en cada una.
 
             /* Actualizamos la posición del jugador en el display */
             timer_delay(200);

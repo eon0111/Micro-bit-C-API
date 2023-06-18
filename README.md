@@ -1,1 +1,1 @@
-# micro-bit-C-API
+# Micro:bit C API

@@ -1,4 +1,4 @@
-#include "../../ubit/ubit.h"
+#include <ubit.h>
 
 int
 get_p(float d)

@@ -151,18 +151,18 @@ display_muestra_imagen(imagen_t img)
  * @brief Muestra una secuencia de imágenes en el display.
  * 
  * @param seq El array que contiene las imágenes
- * @param num_imgs El número de imágenes
+ * @param n_elem_seq El número de imágenes
  * @param delay_ms El delay entre cada imagen
  * @return int -1 si el delay indicado no es válido, o 0 en caso de una
  * terminación correcta
  */
 int
-display_muestra_secuencia(imagen_t seq[], int num_imgs, int delay_ms)
+display_muestra_secuencia(imagen_t seq[], int n_elem_seq, int delay_ms)
 {
     if (delay_ms < 0) return -1;
 
     int i;
-    for (i = 0; i < num_imgs; i++)
+    for (i = 0; i < n_elem_seq; i++)
     {
         display_muestra_imagen(seq[i]);
         timer_delay(delay_ms);
@@ -186,49 +186,97 @@ strlen(char *str)
 }
 
 /**
- * @brief Retorna un puntero a la codificación binaria (en el array de sprites)
- * correspondiente al carácter que se pasa como parámetro.
+ * @brief Muestra en el display el sprite correspondiente a la codificación
+ * indicada.
  * 
- * @param c El carácter cuya codificación quiere obtenerse
- * @return char* El puntero al string que contiene la codificación
+ * @param sprite_bin La codificación del sprite
+ * @return int -1 si la codificación del string no tiene una longitud adecuada
+ * (1 carácter por píxel = 25 píxeles) o si alguno de los carácteres de la cadena
+ * es distinto de '0' o '1'. Retorna 0 en caso de una terminación correcta
  */
-char *char2codi(char c)
+int
+display_muestra_sprite(char *sprite_bin)
 {
-	if (c < '!' || c > '_')
-		return -1;
-	return sprites[(int)c - 33];
+    if (strlen(sprite_bin) != DISPLAY_DIM * DISPLAY_DIM) return -1;
+
+    imagen_t tmp;
+    int i, j;
+    for (i = 0; i < DISPLAY_DIM; i++)
+        for (j = 0; j < DISPLAY_DIM; j++)
+            if (sprite_bin[i] != '1' || sprite_bin[i] != '0')
+                return -1;
+            else
+                tmp[i][j] = (sprite_bin[i] == '1') ? 1 : 0;
+
+    display_muestra_imagen(tmp);
+
+    return 0;
 }
 
 /**
- * @brief Convierte la codificación binaria en formato de string de un carácter
- * a su equivalente imagen de ubit.
+ * @brief Obtiene la codificación de un carácter. Si la codificación del
+ * carácter no se encuentra en la librería de sprites, esta se sustituye por la
+ * codificación del signo de cierre de interrogación.
  * 
- * @param str La codificación a convertir
- * @param resultado La estructura cuyo campo "imagen" contendrá el resultado de
- * la conversión
- * @return int -1 si el string tiene un tamaño distinto del número de píxeles en
- * el display de la placa (25), o 0 en caso de una terminación correcta
+ * @param c El carácter cuya codificación quiere obtenerse
+ * @param codi El string donde depositar la codificación del carácter
  */
-int
-bin2imagen_t(char *str, imagen_t_wrapper *resultado)
+void
+char2codi(char c, char **codi)
 {
-    int i, j;
+    if (c < '!' || c > '_')
+        *codi = sprites['?' - 33];
+    else
+        *codi = sprites[(int)c - 33];
+}
 
-    if (strlen(str) != DISPLAY_DIM * DISPLAY_DIM) return -1;
+#define abs(x) (x < 0) ? -x : x
 
-    for (i = 0; i < DISPLAY_DIM; i++)
-        for (j = 0; j < DISPLAY_DIM; j++)
-            switch (str[i * DISPLAY_DIM + j])
+// TODO: candidato a práctica también
+void
+display_muestra_texto(char *str, velocidad_texto_t v)
+{
+    int i, j, k, m, longitud_str = strlen(str);
+
+    char *codificacion_1 = "";
+    char *codificacion_2 = "";
+
+    imagen_t imagen_tmp_1;
+    imagen_t imagen_tmp_2;
+    imagen_t imagen_compuesta;
+
+    char2codi(str[0], &codificacion_1);
+
+    /* Mostramos cada uno de los carácteres de la cadena */
+    for (k = 0; k < longitud_str - 1; k++)
+    {
+        /* Obtenemos la codificación "binaria" del primer caracter en este ciclo,
+         * y el inmediatamente posterior */
+        char2codi(str[k + 1], &codificacion_2);
+
+        /* Convertimos las codificaciones en sus respectivas imágenes */
+        for (i = 0; i < DISPLAY_DIM; i++)
+            for (j = 0; j < DISPLAY_DIM; j++)
             {
-                case '0':
-                    resultado->imagen[i][j] = 0;
-                    break;
-                case '1':
-                    resultado->imagen[i][j] = 1;
-                    break;
-                default:
-                    return -1;
+                imagen_tmp_1[i][j] = (codificacion_1[i * DISPLAY_DIM + j] == '1') ? 1 : 0;
+                imagen_tmp_2[i][j] = (codificacion_2[i * DISPLAY_DIM + j] == '1') ? 1 : 0;
             }
 
-    return 0;
+        /* Mostramos los carácteres con una animación de deslizamiento de dcha. a izda. */
+        for (m = 0; m <= DISPLAY_DIM + 1; m++)
+        {
+            for (i = 0; i < DISPLAY_DIM; i++)
+            {
+                for (j = 0; j < DISPLAY_DIM; j++)
+                {
+                    imagen_compuesta[i][j] = (m + j < DISPLAY_DIM) ? imagen_tmp_1[i][j + m] : 
+                                            ((m + j == DISPLAY_DIM) ? 0 : imagen_tmp_2[i][abs((DISPLAY_DIM - (j - 1 + m)))]);
+                    display_muestra_imagen(imagen_compuesta);
+                }
+            }
+            timer_delay(1000);
+        }
+
+        char2codi(str[k + 1], &codificacion_1);
+    }
 }

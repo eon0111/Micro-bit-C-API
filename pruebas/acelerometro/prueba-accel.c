@@ -1,4 +1,4 @@
-#include "../../ubit/ubit.h"
+#include <ubit.h>
 
 /* NOTE: busca dispositivos mapeados en el bus I2C interno de la placa */
 static void i2c_map(void)
@@ -25,9 +25,6 @@ static void i2c_map(void)
         printf("\n");
     }
 }
-
-/* FIXME: estas funciones deberían estar en acelerometro.c, pero no encuentro la
- * manera de incluir la librería matemática en ubit.a */
 
 void
 main(int n)
