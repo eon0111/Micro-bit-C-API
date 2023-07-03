@@ -2,8 +2,8 @@
  * @file display.c
  * @author Noe Ruano Gutierrez (nrg916@alumnos.unican.es)
  * @brief Conjunto de rutinas para el manejo del display de 5x5 LEDs.
- * @version 0.1
- * @date TODO:
+ * @version 1.0
+ * @date jul-2023
  * 
  */
 
@@ -19,16 +19,8 @@
 int
 display_cambia_intensidad(intensidad_t intensidad)
 {
-    /* NOTE: podría haber hecho una configuración inicial del nivel de intensidad
-     * empleando el argumento de la función display_init(), pero preferimos no
-     * tocar la librería (copyright??) */
-
     if (intensidad < INT_BAJA || intensidad > INT_ALTA) return -1;
 
-    /* NOTE: podría emplear sus constantes (GPIO_DRIVE_X@hardware.c), pero 
-     * tendría que hacer un mapeo de la intensidad (enumerado) a cada constante,
-     * y este encima sería directo porque, por ejemplo, intensidad "INT_BAJA"
-     * sería el equivalente de GPIO_DRIVE_S0S1 */
     gpio_drive(ROW1, intensidad);
     gpio_drive(ROW2, intensidad);
     gpio_drive(ROW3, intensidad);
@@ -54,27 +46,8 @@ display_enciende_LED(int x, int y)
     /* Elabora el conjunto de señales que hacen que se encienda el LED */
     image_set(x, y, imagen_actual_microbian);
 
-    /* NOTE: Actualiza el valor de la variable compartida de la librería Microbian
-     * que guarda el estado de los LEDs del display
-     * (display_image@display.c[86]) */
+    /* Actualiza el valor de la variable compartida de la librería Microbian */
     display_show(imagen_actual_microbian);
-
-    return 0;
-}
-
-/**
- * @brief Enciende un único LED en el display.
- * 
- * @param c Las coordenadas del LED en el display
- * @return int 0 en caso de una terminación correcta de la función, -1 si el
- * valor de alguna coordenada está fuera del rango [0, 4]
- */
-int
-display_enciende_LED_coordenada(coordenada_t c)
-{
-    if (c.x < 0 || c.x >= DISPLAY_DIM || c.y < 0 || c.y >= DISPLAY_DIM) return -1;
-
-    display_enciende_LED(c.x, c.y);
 
     return 0;
 }
@@ -91,12 +64,6 @@ int
 display_apaga_LED(int x, int y)
 {
     if (x < 0 || x >= DISPLAY_DIM || y < 0 || y >= DISPLAY_DIM) return -1;
-
-    /* NOTE: no tiene sentido apagar un LED directamente tocando el GPIO, porque
-     * la tarea de refresco te lo va a volver a encender si ese LED se encuentra
-     * encendido en la imagen que lee el proceso. Hay que tocar la imagen,
-     * generando en la posición a apagar las señales de control necesarias para
-     * ello */
 
     image_clear_led(x, y, imagen_actual_microbian);
     display_show(imagen_actual_microbian);
@@ -130,12 +97,6 @@ display_muestra_imagen(imagen_t img)
     int i, j;
 
     display_limpia();
-
-    /* NOTE: no tiene sentido llamar en cada iteración a enciende_LED(). Esto
-     * generaría una escritura en el estado del display de Microbian por
-     * iteración, a demás de las escrituras sobre la imagen que se va formando
-     * en el estado de mi librería, cuando tener tan solo estas últimas, y una
-     * única escritura de las primeras */
 
     for (i = 0; i < DISPLAY_DIM; i++)
         for (j = 0; j < DISPLAY_DIM; j++)
@@ -203,10 +164,10 @@ display_muestra_sprite(char *sprite_bin)
     int i, j;
     for (i = 0; i < DISPLAY_DIM; i++)
         for (j = 0; j < DISPLAY_DIM; j++)
-            if (sprite_bin[i] != '1' || sprite_bin[i] != '0')
+            if (sprite_bin[i * DISPLAY_DIM + j] != '1' && sprite_bin[i * DISPLAY_DIM + j] != '0')
                 return -1;
             else
-                tmp[i][j] = (sprite_bin[i] == '1') ? 1 : 0;
+                tmp[i][j] = (sprite_bin[i * DISPLAY_DIM + j] == '1') ? 1 : 0;
 
     display_muestra_imagen(tmp);
 
@@ -222,7 +183,7 @@ display_muestra_sprite(char *sprite_bin)
  * @param codi El string donde depositar la codificación del carácter
  */
 void
-char2codi(char c, char **codi)
+display_char2codi(char c, char **codi)
 {
     if (c < '!' || c > '_')
         *codi = sprites['?' - 33];
@@ -232,9 +193,15 @@ char2codi(char c, char **codi)
 
 #define abs(x) (x < 0) ? -x : x
 
-// TODO: candidato a práctica también
+/**
+ * @brief Muestra un texto en el display LED de la placa con una animación de
+ * deslizamiento hacia la izquierda.
+ * 
+ * @param str El texto a mostrar
+ * @param v La velocidad con la que deberá deslizarse el texto
+ */
 void
-display_muestra_texto(char *str, velocidad_texto_t v)
+display_muestra_texto(char *str, velocidad_texto_t vel)
 {
     int i, j, k, m, longitud_str = strlen(str);
 
@@ -245,14 +212,14 @@ display_muestra_texto(char *str, velocidad_texto_t v)
     imagen_t imagen_tmp_2;
     imagen_t imagen_compuesta;
 
-    char2codi(str[0], &codificacion_1);
+    display_char2codi(str[0], &codificacion_1);
 
     /* Mostramos cada uno de los carácteres de la cadena */
     for (k = 0; k < longitud_str - 1; k++)
     {
         /* Obtenemos la codificación "binaria" del primer caracter en este ciclo,
          * y el inmediatamente posterior */
-        char2codi(str[k + 1], &codificacion_2);
+        display_char2codi(str[k + 1], &codificacion_2);
 
         /* Convertimos las codificaciones en sus respectivas imágenes */
         for (i = 0; i < DISPLAY_DIM; i++)
@@ -274,9 +241,9 @@ display_muestra_texto(char *str, velocidad_texto_t v)
                     display_muestra_imagen(imagen_compuesta);
                 }
             }
-            timer_delay(1000);
+            if (m < DISPLAY_DIM + 1) timer_delay(1000 / (10 * vel + 1));
         }
 
-        char2codi(str[k + 1], &codificacion_1);
+        display_char2codi(str[k + 1], &codificacion_1);
     }
 }

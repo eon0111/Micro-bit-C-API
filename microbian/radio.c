@@ -183,7 +183,7 @@ void radio_group(int grp)
 }
 
 /* radio_send -- send radio packet */
-void radio_send(void *buf, int n)
+void radio_send(void *buf, int n)   // NOTE: n es la longitud en bytes del buffer que se quiera enviar
 {
     message m;
     m.ptr1 = buf;

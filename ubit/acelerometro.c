@@ -3,17 +3,16 @@
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
  * @brief Conjunto de rutinas para el manejo del acelerómetro, brújula
  * y termómetro, integrados en el chip LSM303AGR.
- * @version 0.1
- * @date TODO:
+ * @version 1.0
+ * @date jul-2023
  * 
  */
 
 #include "ubit.h"
 
-#define ACC 0x19    /* La dirección del acelerómetro en el bus I2C -- NOTE: (PDF-accel@p39) */
-#define MAG 0x1E    /* La dirección de la brújula en el bus I2C    -- NOTE: (PDF-accel@p39) */
+#define ACC 0x19
+#define MAG 0x1E
 
-/* NOTE: Direcciones -> PDF-accel@p43 */
 #define ACC_CTRL_REG1   0x20  /* Registro de control del acelerómetro */
 #define ACC_OUT_X       0x29  /* Valor de aceleración en el eje X */
 #define ACC_OUT_Y       0x2B  /* Valor de aceleración en el eje Y */
@@ -30,10 +29,6 @@
 #define RAD_A_GRAD 180 / PI /* = 360 / (2 * PI) */
 #define abs(x) (x < 0) ? -x : x
 
-/* NOTE: el sensor se configura para que trabaje en modo de "bajo consumo", es
- * decir, que proporcionará datos de aceleración con una resolución de 8 bits ->
- * PDF-accel@p27[tabla-14] */
-
 /**
  * @brief Configura el acelerómetro para que comience a realizar mediciones de
  * la aceleración en los ejes X, Y y Z.
@@ -41,13 +36,7 @@
  */
 void acelerometro_inicializa()
 {
-    /* NOTE:  0b01001111 -> 0100 = 50Hz; 1111 = habilita modo de bajo consumo
-     * (lecturas de 8 bits) y activa los tres ejes X,Y y Z -> PDF-accel@p47 */
     i2c_write_reg(I2C_INTERNAL, ACC, ACC_CTRL_REG1, 0x4f);
-    /* NOTE: no he encontrado nada en la documentación que lo indique explícitamente,
-     * pero deduzco que los registros de datos L y H contengan, respectivamente,
-     * los 8 MSBs y 8 LSBs del dato leído, a pesar de la incoherencia en el
-     * nombramiento de los registros...  */
 }
 
 /**
@@ -59,11 +48,7 @@ void acelerometro_inicializa()
 int
 acelerometro_lectura_x()
 {
-    /* FIXME: no entiendo el por qué de hacer que el parámetro cmd sea
-     * 0x28 | 0x80 = 0xA8. Podría ser que se esté incluyendo el bit de "start"
-     * como parte del "comando" (?) */
     signed char tmp;
-    /* NOTE: Podría haber utilizado i2c_read_reg(), pero tampoco tiene mucho sentido, puesto que esa función por dentro va a hacer lo mismo que se hace en la línea siguiente */
     i2c_read_bytes(I2C_INTERNAL, ACC, ACC_OUT_X|0x80, (byte *) &tmp, 1);
     return tmp;
 }
@@ -115,14 +100,6 @@ int
 brujula_lectura_x()
 {
     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
-}
-
-int
-brujula_lectura_x2()
-{
-    signed char buf[6];
-    i2c_read_bytes(I2C_INTERNAL, MAG, MAG_OUT_X|0x80, (byte *) buf, 6);
-    return buf[0];
 }
 
 int
@@ -181,7 +158,7 @@ atan(float x)
  * @return float La inclinación en el eje X
  */
 float
-inclinacion_eje_x() {
+acelerometro_inclinacion_eje_x() {
     float d = atan((float)acelerometro_lectura_z() /
                    (float)acelerometro_lectura_x()) * RAD_A_GRAD;
     return (d < 0) ? -90 - d : 90 - d;
@@ -194,7 +171,7 @@ inclinacion_eje_x() {
  * @return float La inclinación en el eje Y
  */
 float
-inclinacion_eje_y() {
+acelerometro_inclinacion_eje_y() {
     float d = atan((float)acelerometro_lectura_z() /
                    (float)acelerometro_lectura_y()) * RAD_A_GRAD;
     return (d < 0) ? -90 - d : 90 - d;

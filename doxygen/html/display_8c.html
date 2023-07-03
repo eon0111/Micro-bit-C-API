@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Micro:bit C API: Referencia del Archivo display.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Micro:bit C API
+   </div>
+   <div id="projectbrief">Librería de alto nivel para el manejo del hardware disponible en el SBC Micro:bit</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('display_8c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo display.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Conjunto de rutinas para el manejo del display de 5x5 LEDs.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="ubit_8h_source.html">ubit.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sprites_8h_source.html">sprites.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Dependencia gráfica adjunta para display.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="display_8c__incl.png" border="0" usemap="#adisplay_8c" alt=""/></div>
+<map name="adisplay_8c" id="adisplay_8c">
+<area shape="rect" title="Conjunto de rutinas para el manejo del display de 5x5 LEDs." alt="" coords="305,5,384,32"/>
+<area shape="rect" href="ubit_8h.html" title="Fichero de cabecera de la librería Ubit." alt="" coords="269,80,327,107"/>
+<area shape="rect" href="sprites_8h.html" title="Una pequeña librería de sprites que pueden ser mostrados en el display." alt="" coords="352,80,431,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,185,181"/>
+<area shape="rect" title=" " alt="" coords="210,155,386,181"/>
+<area shape="rect" title=" " alt="" coords="410,155,541,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a3aa069ac3980707dae1e0530f50d59e4"><td class="memItemLeft" align="right" valign="top"><a id="a3aa069ac3980707dae1e0530f50d59e4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>abs</b>(x)&#160;&#160;&#160;(x &lt; 0) ? -x : x</td></tr>
+<tr class="separator:a3aa069ac3980707dae1e0530f50d59e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:afb70e9b12379530cabaf588182fb75f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#afb70e9b12379530cabaf588182fb75f1">display_cambia_intensidad</a> (intensidad_t intensidad)</td></tr>
+<tr class="memdesc:afb70e9b12379530cabaf588182fb75f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian.  <a href="display_8c.html#afb70e9b12379530cabaf588182fb75f1">Más...</a><br /></td></tr>
+<tr class="separator:afb70e9b12379530cabaf588182fb75f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f86055084066f0712c204c37f4f4a2c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a0f86055084066f0712c204c37f4f4a2c">display_enciende_LED</a> (int x, int y)</td></tr>
+<tr class="memdesc:a0f86055084066f0712c204c37f4f4a2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enciende un único LED en el display.  <a href="display_8c.html#a0f86055084066f0712c204c37f4f4a2c">Más...</a><br /></td></tr>
+<tr class="separator:a0f86055084066f0712c204c37f4f4a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0964c0173cf855ab8868cbba9aaa93b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#af0964c0173cf855ab8868cbba9aaa93b">display_apaga_LED</a> (int x, int y)</td></tr>
+<tr class="memdesc:af0964c0173cf855ab8868cbba9aaa93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apaga un único LED en el display.  <a href="display_8c.html#af0964c0173cf855ab8868cbba9aaa93b">Más...</a><br /></td></tr>
+<tr class="separator:af0964c0173cf855ab8868cbba9aaa93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb1a525c22f32488ebdaeee7e95524d"><td class="memItemLeft" align="right" valign="top"><a id="a0bb1a525c22f32488ebdaeee7e95524d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a0bb1a525c22f32488ebdaeee7e95524d">display_limpia</a> ()</td></tr>
+<tr class="memdesc:a0bb1a525c22f32488ebdaeee7e95524d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apaga todos los LEDs en el display. <br /></td></tr>
+<tr class="separator:a0bb1a525c22f32488ebdaeee7e95524d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5693f80a483d2d5723b0bb9959d1e5ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a5693f80a483d2d5723b0bb9959d1e5ba">display_muestra_imagen</a> (imagen_t img)</td></tr>
+<tr class="memdesc:a5693f80a483d2d5723b0bb9959d1e5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra una imagen 2D utilizando los LEDs del display.  <a href="display_8c.html#a5693f80a483d2d5723b0bb9959d1e5ba">Más...</a><br /></td></tr>
+<tr class="separator:a5693f80a483d2d5723b0bb9959d1e5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a969fc6cbc67ee3ebfaeed5e0489622"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a9a969fc6cbc67ee3ebfaeed5e0489622">display_muestra_secuencia</a> (imagen_t seq[], int n_elem_seq, int delay_ms)</td></tr>
+<tr class="memdesc:a9a969fc6cbc67ee3ebfaeed5e0489622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra una secuencia de imágenes en el display.  <a href="display_8c.html#a9a969fc6cbc67ee3ebfaeed5e0489622">Más...</a><br /></td></tr>
+<tr class="separator:a9a969fc6cbc67ee3ebfaeed5e0489622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5e0aed3dadbc699fe4bacb076cf05e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a7b5e0aed3dadbc699fe4bacb076cf05e">display_muestra_sprite</a> (char *sprite_bin)</td></tr>
+<tr class="memdesc:a7b5e0aed3dadbc699fe4bacb076cf05e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra en el display el sprite correspondiente a la codificación indicada.  <a href="display_8c.html#a7b5e0aed3dadbc699fe4bacb076cf05e">Más...</a><br /></td></tr>
+<tr class="separator:a7b5e0aed3dadbc699fe4bacb076cf05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac7f19bcea91c0e96fa964a5112bbd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#aeac7f19bcea91c0e96fa964a5112bbd7">display_char2codi</a> (char c, char **codi)</td></tr>
+<tr class="memdesc:aeac7f19bcea91c0e96fa964a5112bbd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación.  <a href="display_8c.html#aeac7f19bcea91c0e96fa964a5112bbd7">Más...</a><br /></td></tr>
+<tr class="separator:aeac7f19bcea91c0e96fa964a5112bbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e70f57dd0306ec0b6410078ca9233a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8c.html#a9e70f57dd0306ec0b6410078ca9233a0">display_muestra_texto</a> (char *str, velocidad_texto_t vel)</td></tr>
+<tr class="memdesc:a9e70f57dd0306ec0b6410078ca9233a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda.  <a href="display_8c.html#a9e70f57dd0306ec0b6410078ca9233a0">Más...</a><br /></td></tr>
+<tr class="separator:a9e70f57dd0306ec0b6410078ca9233a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Conjunto de rutinas para el manejo del display de 5x5 LEDs. </p>
+<dl class="section author"><dt>Autor</dt><dd>Noe Ruano Gutierrez (<a href="#" onclick="location.href='mai'+'lto:'+'nrg'+'91'+'6@a'+'lu'+'mno'+'s.'+'uni'+'ca'+'n.e'+'s'; return false;">nrg91<span style="display: none;">.nosp@m.</span>6@al<span style="display: none;">.nosp@m.</span>umnos<span style="display: none;">.nosp@m.</span>.uni<span style="display: none;">.nosp@m.</span>can.e<span style="display: none;">.nosp@m.</span>s</a>) </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>jul-2023 </dd></dl>
+</div><h2 class="groupheader">Documentación de las funciones</h2>
+<a id="af0964c0173cf855ab8868cbba9aaa93b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0964c0173cf855ab8868cbba9aaa93b">&#9670;&nbsp;</a></span>display_apaga_LED()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_apaga_LED </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apaga un único LED en el display. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordenada en el eje de abscisas dentro del display </td></tr>
+    <tr><td class="paramname">y</td><td>La coordenada en el eje de ordenadas dentro del display </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int 0 en caso de una terminación correcta de la función, -1 si el valor de alguna coordenada está fuera del rango [0, 4] </dd></dl>
+
+</div>
+</div>
+<a id="afb70e9b12379530cabaf588182fb75f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb70e9b12379530cabaf588182fb75f1">&#9670;&nbsp;</a></span>display_cambia_intensidad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_cambia_intensidad </td>
+          <td>(</td>
+          <td class="paramtype">intensidad_t&#160;</td>
+          <td class="paramname"><em>intensidad</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int -1 si el valor de intensidad no es apropiado, 0 en caso de una terminación correcta </dd></dl>
+
+</div>
+</div>
+<a id="aeac7f19bcea91c0e96fa964a5112bbd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac7f19bcea91c0e96fa964a5112bbd7">&#9670;&nbsp;</a></span>display_char2codi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_char2codi </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>codi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>El carácter cuya codificación quiere obtenerse </td></tr>
+    <tr><td class="paramname">codi</td><td>El string donde depositar la codificación del carácter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0f86055084066f0712c204c37f4f4a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f86055084066f0712c204c37f4f4a2c">&#9670;&nbsp;</a></span>display_enciende_LED()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_enciende_LED </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enciende un único LED en el display. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordenada en el eje de abscisas dentro del display </td></tr>
+    <tr><td class="paramname">y</td><td>La coordenada en el eje de ordenadas dentro del display </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int 0 en caso de una terminación correcta de la función, -1 si el valor de alguna coordenada está fuera del rango [0, 4] </dd></dl>
+
+</div>
+</div>
+<a id="a5693f80a483d2d5723b0bb9959d1e5ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5693f80a483d2d5723b0bb9959d1e5ba">&#9670;&nbsp;</a></span>display_muestra_imagen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_muestra_imagen </td>
+          <td>(</td>
+          <td class="paramtype">imagen_t&#160;</td>
+          <td class="paramname"><em>img</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra una imagen 2D utilizando los LEDs del display. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>El array que contiene los valores que determinarán el estado de cada LED </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int 0 si la imagen pudo mostrarse correctamente, o 1 si alguno de los valores de la imagen no es válido </dd></dl>
+
+</div>
+</div>
+<a id="a9a969fc6cbc67ee3ebfaeed5e0489622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a969fc6cbc67ee3ebfaeed5e0489622">&#9670;&nbsp;</a></span>display_muestra_secuencia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_muestra_secuencia </td>
+          <td>(</td>
+          <td class="paramtype">imagen_t&#160;</td>
+          <td class="paramname"><em>seq</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_elem_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>delay_ms</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra una secuencia de imágenes en el display. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>El array que contiene las imágenes </td></tr>
+    <tr><td class="paramname">n_elem_seq</td><td>El número de imágenes </td></tr>
+    <tr><td class="paramname">delay_ms</td><td>El delay entre cada imagen </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int -1 si el delay indicado no es válido, o 0 en caso de una terminación correcta </dd></dl>
+
+</div>
+</div>
+<a id="a7b5e0aed3dadbc699fe4bacb076cf05e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5e0aed3dadbc699fe4bacb076cf05e">&#9670;&nbsp;</a></span>display_muestra_sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int display_muestra_sprite </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sprite_bin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra en el display el sprite correspondiente a la codificación indicada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite_bin</td><td>La codificación del sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int -1 si la codificación del string no tiene una longitud adecuada (1 carácter por píxel = 25 píxeles) o si alguno de los carácteres de la cadena es distinto de '0' o '1'. Retorna 0 en caso de una terminación correcta </dd></dl>
+
+</div>
+</div>
+<a id="a9e70f57dd0306ec0b6410078ca9233a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e70f57dd0306ec0b6410078ca9233a0">&#9670;&nbsp;</a></span>display_muestra_texto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_muestra_texto </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">velocidad_texto_t&#160;</td>
+          <td class="paramname"><em>vel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>El texto a mostrar </td></tr>
+    <tr><td class="paramname">v</td><td>La velocidad con la que deberá deslizarse el texto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="display_8c.html">display.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

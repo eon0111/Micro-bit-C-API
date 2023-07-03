@@ -4,7 +4,7 @@
  * @brief Programa que obtiene el equivalente numérico, según el formato empleado
  * para las imágenes por la librería "ubit", de una imagen en formato PNG con unas
  * dimensiones de 5 por 5 píxeles
- * @version TODO:
+ * @version 1.0
  * @date TODO:
  * 
  */
@@ -41,7 +41,7 @@ main(int argc, char *argv[])
 
     FILE *fich_imagen, *fich_imagen_txt;
     char *nom_fich_imagen_txt = NOM_FICH_IMAGEN_TXT_DEF, *nom_fich_imagen_png;
-    int i, j, k, lista_png_ini = -1;
+    int i, j, k, lista_png_ini = -1, lista_png_fin = argc;
 
     /* Busca el flag de ayuda (-h) y, si lo encuentra, no se procesa ninguna
      * imagen y el programa termina. También busca el flag con el que se indica
@@ -64,6 +64,7 @@ main(int argc, char *argv[])
             }
 
             nom_fich_imagen_txt = (char *)malloc(strlen(argv[i + 1]));
+            lista_png_fin = i;
             strcpy(nom_fich_imagen_txt, argv[i + 1]);
             i++;
         }
@@ -99,8 +100,7 @@ main(int argc, char *argv[])
     }
 
     /* Procesa el listado de imágenes indicado por el usuario */
-    k = lista_png_ini;
-    while (strcmp(argv[(k + 1) % argc], "-f") != 0 && k < argc)
+    for (k = lista_png_ini; k < lista_png_fin; k++)
     {
         nom_fich_imagen_png = argv[k];
         printf("[*] Procesando \"%s\"\n", nom_fich_imagen_png);
@@ -142,7 +142,6 @@ main(int argc, char *argv[])
         fprintf(fich_imagen_txt, "\",    /* %s */\n", nom_fich_imagen_png);
 
         fclose(fich_imagen);
-        k++;
     }
 
     printf("[*] Conversión guardada en \"%s\"\n", nom_fich_imagen_txt);

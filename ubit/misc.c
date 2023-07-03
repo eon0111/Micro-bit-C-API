@@ -2,23 +2,18 @@
  * @file misc.c
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
  * @brief TODO:
- * @version 0.1
- * @date TODO:
+ * @version 1.0
+ * @date jul-2023
  * 
  */
 
 #include "ubit.h"
 
-#define GRUPO_RADIO 1
 #define DISPLAY_DIM 5
-
-/* NOTE: Según el manual de la arquitectura, el valor leído del registro de
- * datos del sensor de temperatura indica el valor de dicha temperatura, pero
- * expresado en número de incrementos de 0.25 ºC (pdfNRF@p427) */
 #define TMP_STEP    0.25
 
 /* Control del termómetro del NRF52833 */
-#define TEMP_BASE       0x4000C000  /* NOTE: pdfNRF@p425 */
+#define TEMP_BASE       0x4000C000
 #define TEMP_TASK_START 0x0
 #define TEMP_DATARDY    0x100
 #define TEMP_DATA       0x508
@@ -71,11 +66,6 @@ init()
     /* Inicialización del zumbador piezoeléctrico */
     gpio_dir(BUZZER, 1);
 
-    /* NOTE: la librería Microbian contiene el driver para operar con el protocolo
-     * de radio de Nordic, no Bluetooth (ni BLE) */
-    radio_init();
-    radio_group(GRUPO_RADIO);   /* NOTE: un grupo es lo mismo que un canal */
-
     start("MAIN", main, 0, STACK);
 }
 
@@ -104,10 +94,4 @@ termometro_lectura()
     *temp_task_start = 1;
     while (!*temp_datardy);
     return *temp_data * TMP_STEP;
-
-    /* NOTE: he probado con código oficial de Micro:bit y se muestra el mismo
-     * valor de temperatura (+2 ºC aprox.), así que deduzco que lo anómalo del
-     * valor depositado en el registro de datos se deba a factores externos a la
-     * programación del dispositivo, quizá una falta (enorme) de precisión en
-     * las lecturas, un error de hardware, etc. */
 }

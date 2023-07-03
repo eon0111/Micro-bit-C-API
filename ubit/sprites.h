@@ -2,8 +2,8 @@
  * @file sprites.h
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
  * @brief Una pequeña librería de sprites que pueden ser mostrados en el display.
- * @version 0.1
- * @date 2023-03-22
+ * @version 1.0
+ * @date jul-2023
  * 
  */
 
@@ -72,17 +72,3 @@ char *sprites[] = {
     "0010001010000000000000000",   /* 94_acento_circunflejo.png     */
     "0000000000000000000001110"    /* 95_barra_baja.png             */
 };
-
-/* NOTE:
- * Opción 1:
- *      Almacenar los sprites como strings -> cada vez que se quiera mostrar un
- *      sprite, se coge el string correspondiente de este fichero de cabecera y
- *      y se convierte en el momento a su equivalente en "formato" imagen_t. Nos
- *      ahorramos tener almacenados 30 y pico arrays bidimensionales de los que
- *      no sabemos cuántos se emplearán en el código del usuario, y la conversión
- *      tampoco es que vaya a ser algo muy costoso en tiempo ni recursos
- *
- * Opción 2:
- *      Almacenar los sprites directamente como elementos del tipo imagen_t, con
- *      el desperdicio de memoria que ello puede conllevar.
- */

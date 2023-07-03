@@ -3,8 +3,8 @@
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
  * @brief Conjunto de rutinas para el manejo de los botones A y B, así como el
  * botón táctil.
- * @version 0.1
- * @date TODO:
+ * @version 1.0
+ * @date jul-2023
  * 
  */
 
