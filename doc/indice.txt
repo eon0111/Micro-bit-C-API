@@ -1,0 +1,48 @@
+Indice
+
+Agradecimientos
+
+Introducción
+    - Qué es Micro:bit (explicación alto nivel, comentando los orígenes del proyecto(BBC, etc.) y poco más)
+    - Justificación del uso de este tipo de hardware en las asignaturas de programación (motivación de los alumnos, ejemplos visuales para asimilar mejor los conceptos)
+    - Objetivos (a grandes rasgos, qué se pretendía con el proyecto: la elaboración de la librería de alto nivel, el desarrollo de herramientas que facilitasen la compilación y carga del código, etc.)
+
+Metodología
+    - Breve resumen de las fases por las que pasó el proyecto (empezamos por los ejemplos (familiarizarse con la librería existente), elaboramos los scripts de compilación y carga, y luego ya pasamos a meternos con la librería de alto nivel)
+
+Herramientas/tecnologías empleadas: qué es cada una y qué uso se le ha dado
+    - Micro:bit (detalles sobre la placa, el hardware) -> Identificación del hardware
+    - Microbian (comentario breve (autor y sus intenciones iniciales (el propósito original de Microbian)) y explicación en el siguiente capítulo) -> hablar de las librerías disponibles (Python, JavasScript, programación con bloques, etc.) y por qué elegimos Microbian
+    - Lenguaje (C, lo que se usa en la asignatura donde se enmpleará la librería de alto nivel)
+    - Doxygen
+    - Compilación cruzada (comentario sobre la arquitectura del microcontrolador, 
+    - I2C, GPIO...
+    
+Librería Microbian
+    (gráfico con las capas de las librerías Microbian y Ubit)
+    Familiarización con el sistema operativo Microbian: ejecución de ejemplos, identificación de funciones y análisis de la estructura interna del SO
+
+Desarrollo del proyecto
+
+    > Desarrollo de las herramientas: compilación, carga de código y depuración (ToDo)
+    > Desarrollo de funciones de librería de alto nivel: por cada dispositivo,
+        detallar las características del hardware y el modo de operación
+
+        * Display
+        * Acelerómetro y brújula (ToDo)
+        * Botones
+        * Zumbador
+        * Sensor de temperatura
+        * Micrófono (ToDo)
+
+            // meter código si es muy relevante. A veces puede interesar más un pseudocódigo
+            
+    (ubicar) - Modificaciones sobre la librería Microbian
+    - Descarga e instalación de la librería (.deb) -> disponibilidad en GitHub, .deb
+    - Documentación (doxy)
+
+Pruebas
+    
+Demos
+
+Conclusiones y trabajo futuro

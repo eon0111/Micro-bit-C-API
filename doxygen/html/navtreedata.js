@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Micro:bit C API", "index.html", [
+  [ "Librería Ubit", "index.html", [
     [ "Estructuras de Datos", "annotated.html", [
       [ "Estructura de datos", "annotated.html", "annotated_dup" ],
       [ "Índice de estructura de datos", "classes.html", null ]

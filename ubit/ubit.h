@@ -55,6 +55,6 @@ int brujula_lectura_z();
 #define NEGRA       1000
 #define CORCHEA     500
 #define SEMICORCHEA 250
-typedef enum {DO_3, RE_3, MI_3, FA_3, SOL_3, LA_3, SI_3, DO_4, RE_4, MI_4, FA_4,
-              SOL_4, LA_4, SI_4, DO_5} nota_t;
+typedef enum {DO_4, RE_4, MI_4, FA_4, SOL_4, LA_4, SI_4, DO_5, RE_5, MI_5, FA_5,
+              SOL_5, LA_5, SI_5, DO_6} nota_t;
 void buzzer_reproduce_nota(nota_t n, int t_ms);
