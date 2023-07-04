@@ -60,8 +60,8 @@ main (int n)
             posicion_anterior.y = posicion_jugador.y;
 
             /* Obtenemos las lecturas de inclinación del acelerómetro */
-            int incl_x = inclinacion_eje_x();
-            int incl_y = inclinacion_eje_y();
+            int incl_x = acelerometro_inclinacion_eje_x();
+            int incl_y = acelerometro_inclinacion_eje_y();
 
             /* Procesamos las colisiones con las paredes del laberinto */
             if (incl_x > INCL && posicion_jugador.x - 1 >= 0 &&         /* Inclinación hacia la IZDA. */
@@ -78,8 +78,6 @@ main (int n)
                     !niveles[i]->laberinto[DIM - posicion_jugador.y - 2][posicion_jugador.x])
                 posicion_jugador.y++;
 
-            // TODO: refactorizar. Detallar los pseudocódigos de cada fase de la práctica y lo que se va aprendiendo en cada una.
-
             /* Actualizamos la posición del jugador en el display */
             timer_delay(200);
             display_apaga_LED(posicion_anterior.x, posicion_anterior.y);
@@ -94,6 +92,14 @@ main (int n)
         }
     }
 
-    // TODO: suena melodía
+    display_limpia();
+
+    buzzer_reproduce_nota(DO_4, SEMICORCHEA);
+    buzzer_reproduce_nota(MI_4, SEMICORCHEA);
+    buzzer_reproduce_nota(SOL_4, SEMICORCHEA);
+    buzzer_reproduce_nota(DO_5, NEGRA);
+
     display_muestra_texto("WINNER!", MEDIO);
+
+    display_limpia();
 }

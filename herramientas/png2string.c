@@ -5,7 +5,7 @@
  * para las imágenes por la librería "ubit", de una imagen en formato PNG con unas
  * dimensiones de 5 por 5 píxeles
  * @version 1.0
- * @date TODO:
+ * @date jul-2023
  * 
  */
 
