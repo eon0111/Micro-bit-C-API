@@ -7,9 +7,9 @@
  * 
  */
 
-#include "microbian.h"
-#include "hardware.h"
-#include "lib.h"
+#include "../microbian/microbian.h"
+#include "../microbian/hardware.h"
+#include "../microbian/lib.h"
 
 /* misc.c */
 void main(int n);
@@ -19,7 +19,6 @@ float termometro_lectura();
 /* display.c */
 #define DISPLAY_DIM 5
 image imagen_actual_microbian;
-typedef struct { int x; int y; } coordenada_t;
 typedef enum {INT_BAJA, INT_MEDIA, INT_ALTA} intensidad_t;
 typedef enum {LENTO, MEDIO, RAPIDO} velocidad_texto_t;
 typedef int imagen_t[DISPLAY_DIM][DISPLAY_DIM];

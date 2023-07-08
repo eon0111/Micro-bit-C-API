@@ -1,8 +1,8 @@
 /**
  * @file acelerometro.c
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
- * @brief Conjunto de rutinas para el manejo del acelerómetro, brújula
- * y termómetro, integrados en el chip LSM303AGR.
+ * @brief Conjunto de rutinas para el manejo del acelerómetro, integrado en el
+ * chip LSM303AGR.
  * @version 1.0
  * @date jul-2023
  * 
@@ -10,19 +10,45 @@
 
 #include "ubit.h"
 
+/**
+ * @brief La dirección base del acelerómetro en el bus I2C.
+ * 
+ */
 #define ACC 0x19
-#define MAG 0x1E
+// #define MAG 0x1E
 
-#define ACC_CTRL_REG1   0x20  /* Registro de control del acelerómetro */
-#define ACC_OUT_X       0x29  /* Valor de aceleración en el eje X */
-#define ACC_OUT_Y       0x2B  /* Valor de aceleración en el eje Y */
-#define ACC_OUT_Z       0x2D  /* Valor de aceleración en el eje Z */
+/**
+ * @brief La dirección del registro de control del acelerómetro.
+ * 
+ */
+#define ACC_CTRL_REG1   0x20
 
-#define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
-#define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
-#define MAG_OUT_X       0x68    /* Valor del campo magnético en el eje X */
-#define MAG_OUT_Y       0x6A    /* Valor del campo magnético en el eje Y */
-#define MAG_OUT_Z       0x6C    /* Valor del campo magnético en el eje Z */
+/**
+ * @brief La dirección del registro de datos donde el acelerómetro deposita las
+ * lecturas del valor de aceleración en el eje X.
+ * 
+ */
+#define ACC_OUT_X       0x29
+
+/**
+ * @brief La dirección del registro de datos donde el acelerómetro deposita las
+ * lecturas del valor de aceleración en el eje X.
+ * 
+ */
+#define ACC_OUT_Y       0x2B
+
+/**
+ * @brief La dirección del registro de datos donde el acelerómetro deposita las
+ * lecturas del valor de aceleración en el eje X.
+ * 
+ */
+#define ACC_OUT_Z       0x2D
+
+// #define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
+// #define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
+// #define MAG_OUT_X       0x68    /* Valor del campo magnético en el eje X */
+// #define MAG_OUT_Y       0x6A    /* Valor del campo magnético en el eje Y */
+// #define MAG_OUT_Z       0x6C    /* Valor del campo magnético en el eje Z */
 
 /* Constantes para el cálculo del valor de la inclinación en grados */
 #define PI 3.14159265358979323846
@@ -81,38 +107,38 @@ acelerometro_lectura_z()
     return tmp;
 }
 
-void
-brujula_inicializa()
-{
-    /* 10011000 -> b8: habilita compensación de temperatura;
-     *             b5: modo bajo consumo;
-     *             b4-3: 50MHz;
-     *             b2-1: modo de medición contínua
-     * NOTE: PDF-accel@p61-62 */
-    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x88);
+// void
+// brujula_inicializa()
+// {
+//     /* 10011000 -> b8: habilita compensación de temperatura;
+//      *             b5: modo bajo consumo;
+//      *             b4-3: 50MHz;
+//      *             b2-1: modo de medición contínua
+//      * NOTE: PDF-accel@p61-62 */
+//     i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x88);
 
-    /* 00000010 -> b2: habilita la cancelación de offset
-     * NOTE: PDF-accel@p23-63 */
-    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG2, 0x02);
-}
+//     /* 00000010 -> b2: habilita la cancelación de offset
+//      * NOTE: PDF-accel@p23-63 */
+//     i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG2, 0x02);
+// }
 
-int
-brujula_lectura_x()
-{
-    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
-}
+// int
+// brujula_lectura_x()
+// {
+//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
+// }
 
-int
-brujula_lectura_y()
-{
-    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
-}
+// int
+// brujula_lectura_y()
+// {
+//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
+// }
 
-int
-brujula_lectura_z()
-{
-    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
-}
+// int
+// brujula_lectura_z()
+// {
+//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
+// }
 
 /**
  * @brief Retorna la potencia 'e' de un número 'b'.
@@ -153,7 +179,7 @@ atan(float x)
 
 /**
  * @brief Proporciona el valor de la inclinación en el eje X, en el rango
- * [-90, 90]. Con la placa posicionada de forma paralela al suelo
+ * [-90, 90].
  * 
  * @return float La inclinación en el eje X
  */

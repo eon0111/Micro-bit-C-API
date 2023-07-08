@@ -1,7 +1,8 @@
 /**
  * @file misc.c
  * @author Noé Ruano Gutiérrez (nrg916@alumnos.unican.es)
- * @brief Alberga la función init
+ * @brief Alberga las funciones init, microbit_inicializa_hardware y
+ * termometro_lectura
  * @version 1.0
  * @date jul-2023
  * 
@@ -9,14 +10,41 @@
 
 #include "ubit.h"
 
-#define DISPLAY_DIM 5
+/**
+ * @brief El paso empleado en la obtención de las medidas del sensor de temperatura.
+ * 
+ */
 #define TMP_STEP    0.25
 
 /* Control del termómetro del NRF52833 */
+
+/**
+ * @brief La dirección base donde se encuentra mapeado el sensor de temperatura.
+ * 
+ */
 #define TEMP_BASE       0x4000C000
+
+/**
+ * @brief El offset del registro TASK_START en el sensor de temperatura. Este 
+ * es el registro empleado para iniciar una lectura.
+ * 
+ */
 #define TEMP_TASK_START 0x0
+
+/**
+ * @brief El offset del registro DATARDY en el sensor de temperatura. Indica con
+ * un valor 1 cuándo se encuentra disponible una lectura del sensor.
+ * 
+ */
 #define TEMP_DATARDY    0x100
+
+/**
+ * @brief El offset del registro DATA en el sensor de temperatura. En él deposita
+ * el sensor las lecturas obtenidas.
+ * 
+ */
 #define TEMP_DATA       0x508
+
 volatile int *temp_base = (volatile int *)TEMP_BASE;
 volatile int *temp_task_start = (volatile int *)(TEMP_BASE + TEMP_TASK_START);
 volatile int *temp_datardy = (volatile int *)(TEMP_BASE + TEMP_DATARDY);
