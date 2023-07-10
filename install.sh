@@ -9,6 +9,6 @@ fi
 
 apt install -y gcc-arm-none-eabi
 apt install -y libpng-dev
-dpkg -i ubit-1.0-1-amd64
+dpkg -i ubit-1.0-1-amd64.deb
 
 echo "[*] Instalación completada!!"
