@@ -7,9 +7,9 @@
  * 
  */
 
-#include "../microbian/microbian.h"
-#include "../microbian/hardware.h"
-#include "../microbian/lib.h"
+#include "microbian.h"
+#include "hardware.h"
+#include "lib.h"
 
 /* misc.c */
 void main(int n);

@@ -1,0 +1,458 @@
+\hypertarget{ubit_8h}{}\doxysubsection{Referencia del Archivo ubit.\+h}
+\label{ubit_8h}\index{ubit.h@{ubit.h}}
+
+
+Fichero de cabecera de la librería Ubit.  
+
+
+{\ttfamily \#include \char`\"{}../microbian/microbian.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../microbian/hardware.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../microbian/lib.\+h\char`\"{}}\newline
+Dependencia gráfica adjunta para ubit.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ubit_8h__incl}
+\end{center}
+\end{figure}
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ubit_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ubit_8h_a53d301a9b35bd3ab582df3bf4bac1b59}\label{ubit_8h_a53d301a9b35bd3ab582df3bf4bac1b59}} 
+\#define {\bfseries DISPLAY\+\_\+\+DIM}~5
+\item 
+\mbox{\Hypertarget{ubit_8h_a41e449d9efa12ec763b1e6717fdb365f}\label{ubit_8h_a41e449d9efa12ec763b1e6717fdb365f}} 
+\#define {\bfseries NEGRA}~1000
+\item 
+\mbox{\Hypertarget{ubit_8h_abc4f40300e46d7b524a418800659b425}\label{ubit_8h_abc4f40300e46d7b524a418800659b425}} 
+\#define {\bfseries CORCHEA}~500
+\item 
+\mbox{\Hypertarget{ubit_8h_a2e16f763804b29d0d8b9110eedf5aeaf}\label{ubit_8h_a2e16f763804b29d0d8b9110eedf5aeaf}} 
+\#define {\bfseries SEMICORCHEA}~250
+\end{DoxyCompactItemize}
+\doxysubsubsection*{typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ubit_8h_a62ea13a71b705592d09e89764692cdcd}\label{ubit_8h_a62ea13a71b705592d09e89764692cdcd}} 
+typedef int \mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}}\mbox{[}DISPLAY\+\_\+\+DIM\mbox{]}\mbox{[}DISPLAY\+\_\+\+DIM\mbox{]}
+\begin{DoxyCompactList}\small\item\em El tipo de dato con que construir una imagen de la librería Ubit que pueda ser mostrada/procesada por las funciones del driver de alto nivel del display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ubit_8h_a488e087410e004333ab34be151344f94}\label{ubit_8h_a488e087410e004333ab34be151344f94}} 
+enum {\bfseries intensidad\+\_\+t} \{ {\bfseries INT\+\_\+\+BAJA}
+, {\bfseries INT\+\_\+\+MEDIA}
+, {\bfseries INT\+\_\+\+ALTA}
+ \}
+\item 
+\mbox{\Hypertarget{ubit_8h_a236b15a88ff8d31b29dcc55c7d1b1c02}\label{ubit_8h_a236b15a88ff8d31b29dcc55c7d1b1c02}} 
+enum {\bfseries velocidad\+\_\+texto\+\_\+t} \{ {\bfseries LENTO}
+, {\bfseries MEDIO}
+, {\bfseries RAPIDO}
+ \}
+\item 
+\mbox{\Hypertarget{ubit_8h_aa3352b79294bfe3671e4be62c54df17e}\label{ubit_8h_aa3352b79294bfe3671e4be62c54df17e}} 
+enum {\bfseries boton\+\_\+t} \{ \newline
+{\bfseries BOTON\+\_\+A}
+, {\bfseries BOTON\+\_\+B}
+, {\bfseries BOTON\+\_\+\+LOGO}
+, {\bfseries BOTON\+\_\+0}
+, \newline
+{\bfseries BOTON\+\_\+1}
+, {\bfseries BOTON\+\_\+2}
+ \}
+\item 
+\mbox{\Hypertarget{ubit_8h_a014e037321286b5bb613b69349df2e0b}\label{ubit_8h_a014e037321286b5bb613b69349df2e0b}} 
+enum {\bfseries nota\+\_\+t} \{ \newline
+{\bfseries DO\+\_\+4}
+, {\bfseries RE\+\_\+4}
+, {\bfseries MI\+\_\+4}
+, {\bfseries FA\+\_\+4}
+, \newline
+{\bfseries SOL\+\_\+4}
+, {\bfseries LA\+\_\+4}
+, {\bfseries SI\+\_\+4}
+, {\bfseries DO\+\_\+5}
+, \newline
+{\bfseries RE\+\_\+5}
+, {\bfseries MI\+\_\+5}
+, {\bfseries FA\+\_\+5}
+, {\bfseries SOL\+\_\+5}
+, \newline
+{\bfseries LA\+\_\+5}
+, {\bfseries SI\+\_\+5}
+, {\bfseries DO\+\_\+6}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ubit_8h_a9e066f616259902a311cc3fdfd134e91}\label{ubit_8h_a9e066f616259902a311cc3fdfd134e91}} 
+void {\bfseries main} (int n)
+\item 
+\mbox{\Hypertarget{ubit_8h_a1266222f9978ad2a61f052aad2cdc0e7}\label{ubit_8h_a1266222f9978ad2a61f052aad2cdc0e7}} 
+void \mbox{\hyperlink{ubit_8h_a1266222f9978ad2a61f052aad2cdc0e7}{microbit\+\_\+inicializa\+\_\+hardware}} ()
+\begin{DoxyCompactList}\small\item\em Wrapper para todas las rutinas de inicialización de los dispositivos hardware manejados por la librería Microbian que no pueden ser inicializados desde fuera de un proceso de Microbian. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{ubit_8h_a08479db9e20ec26a78eb8c0790470870}{termometro\+\_\+lectura}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de temperatura leído por el probe del microcontrolador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_ace97f8b0b859b3832bedcd5f48e95e7a}{display\+\_\+cambia\+\_\+intensidad}} (intensidad\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a0f86055084066f0712c204c37f4f4a2c}{display\+\_\+enciende\+\_\+\+LED}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Enciende un único LED en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_af0964c0173cf855ab8868cbba9aaa93b}{display\+\_\+apaga\+\_\+\+LED}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Apaga un único LED en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a5693f80a483d2d5723b0bb9959d1e5ba}{display\+\_\+muestra\+\_\+imagen}} (\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}} img)
+\begin{DoxyCompactList}\small\item\em Muestra una imagen 2D utilizando los LEDs del display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a9a969fc6cbc67ee3ebfaeed5e0489622}{display\+\_\+muestra\+\_\+secuencia}} (\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}} seq\mbox{[}$\,$\mbox{]}, int n\+\_\+elem\+\_\+seq, int delay\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Muestra una secuencia de imágenes en el display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ubit_8h_a0bb1a525c22f32488ebdaeee7e95524d}\label{ubit_8h_a0bb1a525c22f32488ebdaeee7e95524d}} 
+void \mbox{\hyperlink{ubit_8h_a0bb1a525c22f32488ebdaeee7e95524d}{display\+\_\+limpia}} ()
+\begin{DoxyCompactList}\small\item\em Apaga todos los LEDs en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a7b5e0aed3dadbc699fe4bacb076cf05e}{display\+\_\+muestra\+\_\+sprite}} (char $\ast$sprite\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Muestra en el display el sprite correspondiente a la codificación indicada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ubit_8h_aeac7f19bcea91c0e96fa964a5112bbd7}{display\+\_\+char2codi}} (char c, char $\ast$$\ast$codi)
+\begin{DoxyCompactList}\small\item\em Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ubit_8h_ac70579b351f7e55c2279a178fb8f4fe6}{display\+\_\+muestra\+\_\+texto}} (char $\ast$str, velocidad\+\_\+texto\+\_\+t v)
+\begin{DoxyCompactList}\small\item\em Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a620464d75bf384eca4c7db41f811c22c}{boton\+\_\+pulsado}} (boton\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Retorna el estado de un botón. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a4663bbc3ec477c4fd8bf5f644d8a0c7a}{boton\+\_\+espera\+\_\+pulsacion}} (boton\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Realiza una espera activa a la espera de que se pulse un botón concreto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ubit_8h_a5fd0b6fd546f22ed220baf20ad244cc5}\label{ubit_8h_a5fd0b6fd546f22ed220baf20ad244cc5}} 
+void \mbox{\hyperlink{ubit_8h_a5fd0b6fd546f22ed220baf20ad244cc5}{acelerometro\+\_\+inicializa}} ()
+\begin{DoxyCompactList}\small\item\em Configura el acelerómetro para que comience a realizar mediciones de la aceleración en los ejes X, Y y Z. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a169eee0556749ef07158f51026fdb7c4}{acelerometro\+\_\+lectura\+\_\+x}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje X, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_a794e12f2d7bd8cd9a38111cb5b7a9c71}{acelerometro\+\_\+lectura\+\_\+y}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje Y, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ubit_8h_ae10a8bda4f78b34f257a52c5b4e8b081}{acelerometro\+\_\+lectura\+\_\+z}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje Z, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{ubit_8h_a73ffcf1f3c69bbd2dd6498316effc4f5}{acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+x}} ()
+\begin{DoxyCompactList}\small\item\em Proporciona el valor de la inclinación en el eje X, en el rango \mbox{[}-\/90, 90\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{ubit_8h_a2154bc2bdff0aa2c259f576923933212}{acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+y}} ()
+\begin{DoxyCompactList}\small\item\em Proporciona el valor de la inclinación en el eje Y, en el rango \mbox{[}-\/90, 90\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ubit_8h_a20ca75613187d272380584c4bbfe77f6}\label{ubit_8h_a20ca75613187d272380584c4bbfe77f6}} 
+void {\bfseries brujula\+\_\+inicializa} ()
+\item 
+\mbox{\Hypertarget{ubit_8h_a89d2dbeb746931ae2874cb931c29b672}\label{ubit_8h_a89d2dbeb746931ae2874cb931c29b672}} 
+int {\bfseries brujula\+\_\+lectura\+\_\+x} ()
+\item 
+\mbox{\Hypertarget{ubit_8h_adf5d30592a9039e3d9426488832cfc9c}\label{ubit_8h_adf5d30592a9039e3d9426488832cfc9c}} 
+int {\bfseries brujula\+\_\+lectura\+\_\+x2} ()
+\item 
+\mbox{\Hypertarget{ubit_8h_a0b997133cf246dbb921cd4bd689ab756}\label{ubit_8h_a0b997133cf246dbb921cd4bd689ab756}} 
+int {\bfseries brujula\+\_\+lectura\+\_\+y} ()
+\item 
+\mbox{\Hypertarget{ubit_8h_ab7bc4a6bc78021b08ee1b3cd9a06bc47}\label{ubit_8h_ab7bc4a6bc78021b08ee1b3cd9a06bc47}} 
+int {\bfseries brujula\+\_\+lectura\+\_\+z} ()
+\item 
+void \mbox{\hyperlink{ubit_8h_a8fbdbbfad51a8e79222b10272cb72587}{buzzer\+\_\+reproduce\+\_\+nota}} (nota\+\_\+t n, int t\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Reproduce un tono de frecuencia igual al inverso del periodo correspondiente a la nota \char`\"{}n\char`\"{} indicada, durante t\+\_\+ms milisegundos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ubit_8h_a4a78736ff744318845bc97e16d7a2156}\label{ubit_8h_a4a78736ff744318845bc97e16d7a2156}} 
+image {\bfseries imagen\+\_\+actual\+\_\+microbian}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Fichero de cabecera de la librería Ubit. 
+
+\begin{DoxyAuthor}{Autor}
+Noe Ruano Gutierrez (\href{mailto:nrg916@alumnos.unican.es}{\texttt{ nrg916@alumnos.\+unican.\+es}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+jul-\/2023 
+\end{DoxyDate}
+
+
+\doxysubsubsection{Documentación de las funciones}
+\mbox{\Hypertarget{ubit_8h_a73ffcf1f3c69bbd2dd6498316effc4f5}\label{ubit_8h_a73ffcf1f3c69bbd2dd6498316effc4f5}} 
+\index{ubit.h@{ubit.h}!acelerometro\_inclinacion\_eje\_x@{acelerometro\_inclinacion\_eje\_x}}
+\index{acelerometro\_inclinacion\_eje\_x@{acelerometro\_inclinacion\_eje\_x}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{acelerometro\_inclinacion\_eje\_x()}{acelerometro\_inclinacion\_eje\_x()}}
+{\footnotesize\ttfamily float acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Proporciona el valor de la inclinación en el eje X, en el rango \mbox{[}-\/90, 90\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+float La inclinación en el eje X 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a2154bc2bdff0aa2c259f576923933212}\label{ubit_8h_a2154bc2bdff0aa2c259f576923933212}} 
+\index{ubit.h@{ubit.h}!acelerometro\_inclinacion\_eje\_y@{acelerometro\_inclinacion\_eje\_y}}
+\index{acelerometro\_inclinacion\_eje\_y@{acelerometro\_inclinacion\_eje\_y}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{acelerometro\_inclinacion\_eje\_y()}{acelerometro\_inclinacion\_eje\_y()}}
+{\footnotesize\ttfamily float acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Proporciona el valor de la inclinación en el eje Y, en el rango \mbox{[}-\/90, 90\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+float La inclinación en el eje Y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a169eee0556749ef07158f51026fdb7c4}\label{ubit_8h_a169eee0556749ef07158f51026fdb7c4}} 
+\index{ubit.h@{ubit.h}!acelerometro\_lectura\_x@{acelerometro\_lectura\_x}}
+\index{acelerometro\_lectura\_x@{acelerometro\_lectura\_x}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_x()}{acelerometro\_lectura\_x()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje X, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje X 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a794e12f2d7bd8cd9a38111cb5b7a9c71}\label{ubit_8h_a794e12f2d7bd8cd9a38111cb5b7a9c71}} 
+\index{ubit.h@{ubit.h}!acelerometro\_lectura\_y@{acelerometro\_lectura\_y}}
+\index{acelerometro\_lectura\_y@{acelerometro\_lectura\_y}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_y()}{acelerometro\_lectura\_y()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje Y, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje Y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_ae10a8bda4f78b34f257a52c5b4e8b081}\label{ubit_8h_ae10a8bda4f78b34f257a52c5b4e8b081}} 
+\index{ubit.h@{ubit.h}!acelerometro\_lectura\_z@{acelerometro\_lectura\_z}}
+\index{acelerometro\_lectura\_z@{acelerometro\_lectura\_z}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_z()}{acelerometro\_lectura\_z()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje Z, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje Z 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a4663bbc3ec477c4fd8bf5f644d8a0c7a}\label{ubit_8h_a4663bbc3ec477c4fd8bf5f644d8a0c7a}} 
+\index{ubit.h@{ubit.h}!boton\_espera\_pulsacion@{boton\_espera\_pulsacion}}
+\index{boton\_espera\_pulsacion@{boton\_espera\_pulsacion}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{boton\_espera\_pulsacion()}{boton\_espera\_pulsacion()}}
+{\footnotesize\ttfamily int boton\+\_\+espera\+\_\+pulsacion (\begin{DoxyParamCaption}\item[{boton\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Realiza una espera activa a la espera de que se pulse un botón concreto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em b} & El botón cuya pulsación debe detectarse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si el botón indicado no se corresponde con ninguno de los contemplados, o 0 una vez el botón ha sido pulsado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a620464d75bf384eca4c7db41f811c22c}\label{ubit_8h_a620464d75bf384eca4c7db41f811c22c}} 
+\index{ubit.h@{ubit.h}!boton\_pulsado@{boton\_pulsado}}
+\index{boton\_pulsado@{boton\_pulsado}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{boton\_pulsado()}{boton\_pulsado()}}
+{\footnotesize\ttfamily int boton\+\_\+pulsado (\begin{DoxyParamCaption}\item[{boton\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Retorna el estado de un botón. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em b} & El botón cuyo estado quiere conocerse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 1 si el botón está pulsado o 0 si no lo está 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a8fbdbbfad51a8e79222b10272cb72587}\label{ubit_8h_a8fbdbbfad51a8e79222b10272cb72587}} 
+\index{ubit.h@{ubit.h}!buzzer\_reproduce\_nota@{buzzer\_reproduce\_nota}}
+\index{buzzer\_reproduce\_nota@{buzzer\_reproduce\_nota}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{buzzer\_reproduce\_nota()}{buzzer\_reproduce\_nota()}}
+{\footnotesize\ttfamily void buzzer\+\_\+reproduce\+\_\+nota (\begin{DoxyParamCaption}\item[{nota\+\_\+t}]{n,  }\item[{int}]{t\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Reproduce un tono de frecuencia igual al inverso del periodo correspondiente a la nota \char`\"{}n\char`\"{} indicada, durante t\+\_\+ms milisegundos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & le nota a reproducir \\
+\hline
+{\em t\+\_\+ms} & la duración de la nota \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ubit_8h_af0964c0173cf855ab8868cbba9aaa93b}\label{ubit_8h_af0964c0173cf855ab8868cbba9aaa93b}} 
+\index{ubit.h@{ubit.h}!display\_apaga\_LED@{display\_apaga\_LED}}
+\index{display\_apaga\_LED@{display\_apaga\_LED}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_apaga\_LED()}{display\_apaga\_LED()}}
+{\footnotesize\ttfamily int display\+\_\+apaga\+\_\+\+LED (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Apaga un único LED en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & La coordenada en el eje de abscisas dentro del display \\
+\hline
+{\em y} & La coordenada en el eje de ordenadas dentro del display \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 en caso de una terminación correcta de la función, -\/1 si el valor de alguna coordenada está fuera del rango \mbox{[}0, 4\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_ace97f8b0b859b3832bedcd5f48e95e7a}\label{ubit_8h_ace97f8b0b859b3832bedcd5f48e95e7a}} 
+\index{ubit.h@{ubit.h}!display\_cambia\_intensidad@{display\_cambia\_intensidad}}
+\index{display\_cambia\_intensidad@{display\_cambia\_intensidad}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_cambia\_intensidad()}{display\_cambia\_intensidad()}}
+{\footnotesize\ttfamily int display\+\_\+cambia\+\_\+intensidad (\begin{DoxyParamCaption}\item[{intensidad\+\_\+t}]{intensidad }\end{DoxyParamCaption})}
+
+
+
+Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian. 
+
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si el valor de intensidad no es apropiado, 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_aeac7f19bcea91c0e96fa964a5112bbd7}\label{ubit_8h_aeac7f19bcea91c0e96fa964a5112bbd7}} 
+\index{ubit.h@{ubit.h}!display\_char2codi@{display\_char2codi}}
+\index{display\_char2codi@{display\_char2codi}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_char2codi()}{display\_char2codi()}}
+{\footnotesize\ttfamily void display\+\_\+char2codi (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{char $\ast$$\ast$}]{codi }\end{DoxyParamCaption})}
+
+
+
+Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em c} & El carácter cuya codificación quiere obtenerse \\
+\hline
+{\em codi} & El string donde depositar la codificación del carácter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ubit_8h_a0f86055084066f0712c204c37f4f4a2c}\label{ubit_8h_a0f86055084066f0712c204c37f4f4a2c}} 
+\index{ubit.h@{ubit.h}!display\_enciende\_LED@{display\_enciende\_LED}}
+\index{display\_enciende\_LED@{display\_enciende\_LED}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_enciende\_LED()}{display\_enciende\_LED()}}
+{\footnotesize\ttfamily int display\+\_\+enciende\+\_\+\+LED (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Enciende un único LED en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & La coordenada en el eje de abscisas dentro del display \\
+\hline
+{\em y} & La coordenada en el eje de ordenadas dentro del display \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 en caso de una terminación correcta de la función, -\/1 si el valor de alguna coordenada está fuera del rango \mbox{[}0, 4\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a5693f80a483d2d5723b0bb9959d1e5ba}\label{ubit_8h_a5693f80a483d2d5723b0bb9959d1e5ba}} 
+\index{ubit.h@{ubit.h}!display\_muestra\_imagen@{display\_muestra\_imagen}}
+\index{display\_muestra\_imagen@{display\_muestra\_imagen}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_imagen()}{display\_muestra\_imagen()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+imagen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}}}]{img }\end{DoxyParamCaption})}
+
+
+
+Muestra una imagen 2D utilizando los LEDs del display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em img} & El array que contiene los valores que determinarán el estado de cada LED \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 si la imagen pudo mostrarse correctamente, o 1 si alguno de los valores de la imagen no es válido 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a9a969fc6cbc67ee3ebfaeed5e0489622}\label{ubit_8h_a9a969fc6cbc67ee3ebfaeed5e0489622}} 
+\index{ubit.h@{ubit.h}!display\_muestra\_secuencia@{display\_muestra\_secuencia}}
+\index{display\_muestra\_secuencia@{display\_muestra\_secuencia}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_secuencia()}{display\_muestra\_secuencia()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+secuencia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}}}]{seq\mbox{[}$\,$\mbox{]},  }\item[{int}]{n\+\_\+elem\+\_\+seq,  }\item[{int}]{delay\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Muestra una secuencia de imágenes en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em seq} & El array que contiene las imágenes \\
+\hline
+{\em n\+\_\+elem\+\_\+seq} & El número de imágenes \\
+\hline
+{\em delay\+\_\+ms} & El delay entre cada imagen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si el delay indicado no es válido, o 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_a7b5e0aed3dadbc699fe4bacb076cf05e}\label{ubit_8h_a7b5e0aed3dadbc699fe4bacb076cf05e}} 
+\index{ubit.h@{ubit.h}!display\_muestra\_sprite@{display\_muestra\_sprite}}
+\index{display\_muestra\_sprite@{display\_muestra\_sprite}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_sprite()}{display\_muestra\_sprite()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+sprite (\begin{DoxyParamCaption}\item[{char $\ast$}]{sprite\+\_\+bin }\end{DoxyParamCaption})}
+
+
+
+Muestra en el display el sprite correspondiente a la codificación indicada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sprite\+\_\+bin} & La codificación del sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si la codificación del string no tiene una longitud adecuada (1 carácter por píxel = 25 píxeles) o si alguno de los carácteres de la cadena es distinto de \textquotesingle{}0\textquotesingle{} o \textquotesingle{}1\textquotesingle{}. Retorna 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ubit_8h_ac70579b351f7e55c2279a178fb8f4fe6}\label{ubit_8h_ac70579b351f7e55c2279a178fb8f4fe6}} 
+\index{ubit.h@{ubit.h}!display\_muestra\_texto@{display\_muestra\_texto}}
+\index{display\_muestra\_texto@{display\_muestra\_texto}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_texto()}{display\_muestra\_texto()}}
+{\footnotesize\ttfamily void display\+\_\+muestra\+\_\+texto (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{velocidad\+\_\+texto\+\_\+t}]{vel }\end{DoxyParamCaption})}
+
+
+
+Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em str} & El texto a mostrar \\
+\hline
+{\em v} & La velocidad con la que deberá deslizarse el texto \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ubit_8h_a08479db9e20ec26a78eb8c0790470870}\label{ubit_8h_a08479db9e20ec26a78eb8c0790470870}} 
+\index{ubit.h@{ubit.h}!termometro\_lectura@{termometro\_lectura}}
+\index{termometro\_lectura@{termometro\_lectura}!ubit.h@{ubit.h}}
+\doxyparagraph{\texorpdfstring{termometro\_lectura()}{termometro\_lectura()}}
+{\footnotesize\ttfamily float termometro\+\_\+lectura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de temperatura leído por el probe del microcontrolador. 
+
+\begin{DoxyReturn}{Devuelve}
+int Una aproximación de la temperatura ambiental 
+\end{DoxyReturn}

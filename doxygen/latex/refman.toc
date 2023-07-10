@@ -1,0 +1,62 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Indice de archivos}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Lista de archivos}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Documentación de archivos}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Referencia del Archivo acelerometro.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Descripción detallada}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Documentación de las funciones}{3}{subsubsection.2.1.2}%
+\contentsline {paragraph}{\numberline {2.1.2.1}acelerometro\_inclinacion\_eje\_x()}{3}{paragraph.2.1.2.1}%
+\contentsline {paragraph}{\numberline {2.1.2.2}acelerometro\_inclinacion\_eje\_y()}{4}{paragraph.2.1.2.2}%
+\contentsline {paragraph}{\numberline {2.1.2.3}acelerometro\_lectura\_x()}{4}{paragraph.2.1.2.3}%
+\contentsline {paragraph}{\numberline {2.1.2.4}acelerometro\_lectura\_y()}{4}{paragraph.2.1.2.4}%
+\contentsline {paragraph}{\numberline {2.1.2.5}acelerometro\_lectura\_z()}{4}{paragraph.2.1.2.5}%
+\contentsline {subsection}{\numberline {2.2}Referencia del Archivo botones.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Descripción detallada}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Documentación de las funciones}{5}{subsubsection.2.2.2}%
+\contentsline {paragraph}{\numberline {2.2.2.1}boton\_espera\_pulsacion()}{5}{paragraph.2.2.2.1}%
+\contentsline {paragraph}{\numberline {2.2.2.2}boton\_pulsado()}{5}{paragraph.2.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Referencia del Archivo buzzer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Descripción detallada}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Documentación de las funciones}{7}{subsubsection.2.3.2}%
+\contentsline {paragraph}{\numberline {2.3.2.1}buzzer\_reproduce\_nota()}{7}{paragraph.2.3.2.1}%
+\contentsline {subsubsection}{\numberline {2.3.3}Documentación de las variables}{7}{subsubsection.2.3.3}%
+\contentsline {paragraph}{\numberline {2.3.3.1}periodo\_us}{7}{paragraph.2.3.3.1}%
+\contentsline {subsection}{\numberline {2.4}Referencia del Archivo display.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{7}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Descripción detallada}{8}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Documentación de las funciones}{8}{subsubsection.2.4.2}%
+\contentsline {paragraph}{\numberline {2.4.2.1}display\_apaga\_LED()}{8}{paragraph.2.4.2.1}%
+\contentsline {paragraph}{\numberline {2.4.2.2}display\_cambia\_intensidad()}{9}{paragraph.2.4.2.2}%
+\contentsline {paragraph}{\numberline {2.4.2.3}display\_char2codi()}{9}{paragraph.2.4.2.3}%
+\contentsline {paragraph}{\numberline {2.4.2.4}display\_enciende\_LED()}{9}{paragraph.2.4.2.4}%
+\contentsline {paragraph}{\numberline {2.4.2.5}display\_muestra\_imagen()}{10}{paragraph.2.4.2.5}%
+\contentsline {paragraph}{\numberline {2.4.2.6}display\_muestra\_secuencia()}{10}{paragraph.2.4.2.6}%
+\contentsline {paragraph}{\numberline {2.4.2.7}display\_muestra\_sprite()}{10}{paragraph.2.4.2.7}%
+\contentsline {paragraph}{\numberline {2.4.2.8}display\_muestra\_texto()}{11}{paragraph.2.4.2.8}%
+\contentsline {subsection}{\numberline {2.5}Referencia del Archivo misc.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}c}{11}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Descripción detallada}{12}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Documentación de las funciones}{12}{subsubsection.2.5.2}%
+\contentsline {paragraph}{\numberline {2.5.2.1}termometro\_lectura()}{12}{paragraph.2.5.2.1}%
+\contentsline {subsection}{\numberline {2.6}Referencia del Archivo sprites.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{13}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Descripción detallada}{13}{subsubsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.7}Referencia del Archivo ubit.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{14}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Descripción detallada}{16}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}Documentación de las funciones}{16}{subsubsection.2.7.2}%
+\contentsline {paragraph}{\numberline {2.7.2.1}acelerometro\_inclinacion\_eje\_x()}{16}{paragraph.2.7.2.1}%
+\contentsline {paragraph}{\numberline {2.7.2.2}acelerometro\_inclinacion\_eje\_y()}{16}{paragraph.2.7.2.2}%
+\contentsline {paragraph}{\numberline {2.7.2.3}acelerometro\_lectura\_x()}{17}{paragraph.2.7.2.3}%
+\contentsline {paragraph}{\numberline {2.7.2.4}acelerometro\_lectura\_y()}{17}{paragraph.2.7.2.4}%
+\contentsline {paragraph}{\numberline {2.7.2.5}acelerometro\_lectura\_z()}{17}{paragraph.2.7.2.5}%
+\contentsline {paragraph}{\numberline {2.7.2.6}boton\_espera\_pulsacion()}{17}{paragraph.2.7.2.6}%
+\contentsline {paragraph}{\numberline {2.7.2.7}boton\_pulsado()}{17}{paragraph.2.7.2.7}%
+\contentsline {paragraph}{\numberline {2.7.2.8}buzzer\_reproduce\_nota()}{18}{paragraph.2.7.2.8}%
+\contentsline {paragraph}{\numberline {2.7.2.9}display\_apaga\_LED()}{18}{paragraph.2.7.2.9}%
+\contentsline {paragraph}{\numberline {2.7.2.10}display\_cambia\_intensidad()}{18}{paragraph.2.7.2.10}%
+\contentsline {paragraph}{\numberline {2.7.2.11}display\_char2codi()}{19}{paragraph.2.7.2.11}%
+\contentsline {paragraph}{\numberline {2.7.2.12}display\_enciende\_LED()}{19}{paragraph.2.7.2.12}%
+\contentsline {paragraph}{\numberline {2.7.2.13}display\_muestra\_imagen()}{19}{paragraph.2.7.2.13}%
+\contentsline {paragraph}{\numberline {2.7.2.14}display\_muestra\_secuencia()}{20}{paragraph.2.7.2.14}%
+\contentsline {paragraph}{\numberline {2.7.2.15}display\_muestra\_sprite()}{20}{paragraph.2.7.2.15}%
+\contentsline {paragraph}{\numberline {2.7.2.16}display\_muestra\_texto()}{20}{paragraph.2.7.2.16}%
+\contentsline {paragraph}{\numberline {2.7.2.17}termometro\_lectura()}{20}{paragraph.2.7.2.17}%
+\contentsline {section}{\'{I}ndice alfab\'{e}tico}{23}{section*.25}%

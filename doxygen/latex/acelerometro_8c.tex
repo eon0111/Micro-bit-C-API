@@ -1,0 +1,141 @@
+\hypertarget{acelerometro_8c}{}\doxysubsection{Referencia del Archivo acelerometro.\+c}
+\label{acelerometro_8c}\index{acelerometro.c@{acelerometro.c}}
+
+
+Conjunto de rutinas para el manejo del acelerómetro, integrado en el chip LSM303\+AGR.  
+
+
+{\ttfamily \#include \char`\"{}ubit.\+h\char`\"{}}\newline
+Dependencia gráfica adjunta para acelerometro.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{acelerometro_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{acelerometro_8c_a09fc148003f20ecc4834d4ea6aefb15c}\label{acelerometro_8c_a09fc148003f20ecc4834d4ea6aefb15c}} 
+\#define \mbox{\hyperlink{acelerometro_8c_a09fc148003f20ecc4834d4ea6aefb15c}{ACC}}~0x19
+\begin{DoxyCompactList}\small\item\em La dirección base del acelerómetro en el bus I2C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{acelerometro_8c_a4261ed5ff8ba2ae0b2000c312f46d5ad}\label{acelerometro_8c_a4261ed5ff8ba2ae0b2000c312f46d5ad}} 
+\#define \mbox{\hyperlink{acelerometro_8c_a4261ed5ff8ba2ae0b2000c312f46d5ad}{ACC\+\_\+\+CTRL\+\_\+\+REG1}}~0x20
+\begin{DoxyCompactList}\small\item\em La dirección del registro de control del acelerómetro. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{acelerometro_8c_a83ea82a0ea23a77aad53a26efeee72b7}\label{acelerometro_8c_a83ea82a0ea23a77aad53a26efeee72b7}} 
+\#define \mbox{\hyperlink{acelerometro_8c_a83ea82a0ea23a77aad53a26efeee72b7}{ACC\+\_\+\+OUT\+\_\+X}}~0x29
+\begin{DoxyCompactList}\small\item\em La dirección del registro de datos donde el acelerómetro deposita las lecturas del valor de aceleración en el eje X. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{acelerometro_8c_a462e86f76f74f9b19a562683572ffb44}\label{acelerometro_8c_a462e86f76f74f9b19a562683572ffb44}} 
+\#define \mbox{\hyperlink{acelerometro_8c_a462e86f76f74f9b19a562683572ffb44}{ACC\+\_\+\+OUT\+\_\+Y}}~0x2B
+\begin{DoxyCompactList}\small\item\em La dirección del registro de datos donde el acelerómetro deposita las lecturas del valor de aceleración en el eje X. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{acelerometro_8c_a5aa358a5ac2183e9e1bd133229a42588}\label{acelerometro_8c_a5aa358a5ac2183e9e1bd133229a42588}} 
+\#define \mbox{\hyperlink{acelerometro_8c_a5aa358a5ac2183e9e1bd133229a42588}{ACC\+\_\+\+OUT\+\_\+Z}}~0x2D
+\begin{DoxyCompactList}\small\item\em La dirección del registro de datos donde el acelerómetro deposita las lecturas del valor de aceleración en el eje X. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{acelerometro_8c_a598a3330b3c21701223ee0ca14316eca}\label{acelerometro_8c_a598a3330b3c21701223ee0ca14316eca}} 
+\#define {\bfseries PI}~3.\+14159265358979323846
+\item 
+\mbox{\Hypertarget{acelerometro_8c_abda6f2b4e574e9483c67e44047d31101}\label{acelerometro_8c_abda6f2b4e574e9483c67e44047d31101}} 
+\#define {\bfseries RAD\+\_\+\+A\+\_\+\+GRAD}~180 / PI /$\ast$ = 360 / (2 $\ast$ PI) $\ast$/
+\item 
+\mbox{\Hypertarget{acelerometro_8c_a3aa069ac3980707dae1e0530f50d59e4}\label{acelerometro_8c_a3aa069ac3980707dae1e0530f50d59e4}} 
+\#define {\bfseries abs}(x)~(x $<$ 0) ? -\/x \+: x
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{acelerometro_8c_a5fd0b6fd546f22ed220baf20ad244cc5}\label{acelerometro_8c_a5fd0b6fd546f22ed220baf20ad244cc5}} 
+void \mbox{\hyperlink{acelerometro_8c_a5fd0b6fd546f22ed220baf20ad244cc5}{acelerometro\+\_\+inicializa}} ()
+\begin{DoxyCompactList}\small\item\em Configura el acelerómetro para que comience a realizar mediciones de la aceleración en los ejes X, Y y Z. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{acelerometro_8c_a169eee0556749ef07158f51026fdb7c4}{acelerometro\+\_\+lectura\+\_\+x}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje X, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{acelerometro_8c_a794e12f2d7bd8cd9a38111cb5b7a9c71}{acelerometro\+\_\+lectura\+\_\+y}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje Y, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{acelerometro_8c_ae10a8bda4f78b34f257a52c5b4e8b081}{acelerometro\+\_\+lectura\+\_\+z}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor de la aceleración en el eje Z, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{acelerometro_8c_a73ffcf1f3c69bbd2dd6498316effc4f5}{acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+x}} ()
+\begin{DoxyCompactList}\small\item\em Proporciona el valor de la inclinación en el eje X, en el rango \mbox{[}-\/90, 90\mbox{]}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{acelerometro_8c_a2154bc2bdff0aa2c259f576923933212}{acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+y}} ()
+\begin{DoxyCompactList}\small\item\em Proporciona el valor de la inclinación en el eje Y, en el rango \mbox{[}-\/90, 90\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Conjunto de rutinas para el manejo del acelerómetro, integrado en el chip LSM303\+AGR. 
+
+\begin{DoxyAuthor}{Autor}
+Noé Ruano Gutiérrez (\href{mailto:nrg916@alumnos.unican.es}{\texttt{ nrg916@alumnos.\+unican.\+es}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+jul-\/2023 
+\end{DoxyDate}
+
+
+\doxysubsubsection{Documentación de las funciones}
+\mbox{\Hypertarget{acelerometro_8c_a73ffcf1f3c69bbd2dd6498316effc4f5}\label{acelerometro_8c_a73ffcf1f3c69bbd2dd6498316effc4f5}} 
+\index{acelerometro.c@{acelerometro.c}!acelerometro\_inclinacion\_eje\_x@{acelerometro\_inclinacion\_eje\_x}}
+\index{acelerometro\_inclinacion\_eje\_x@{acelerometro\_inclinacion\_eje\_x}!acelerometro.c@{acelerometro.c}}
+\doxyparagraph{\texorpdfstring{acelerometro\_inclinacion\_eje\_x()}{acelerometro\_inclinacion\_eje\_x()}}
+{\footnotesize\ttfamily float acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Proporciona el valor de la inclinación en el eje X, en el rango \mbox{[}-\/90, 90\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+float La inclinación en el eje X 
+\end{DoxyReturn}
+\mbox{\Hypertarget{acelerometro_8c_a2154bc2bdff0aa2c259f576923933212}\label{acelerometro_8c_a2154bc2bdff0aa2c259f576923933212}} 
+\index{acelerometro.c@{acelerometro.c}!acelerometro\_inclinacion\_eje\_y@{acelerometro\_inclinacion\_eje\_y}}
+\index{acelerometro\_inclinacion\_eje\_y@{acelerometro\_inclinacion\_eje\_y}!acelerometro.c@{acelerometro.c}}
+\doxyparagraph{\texorpdfstring{acelerometro\_inclinacion\_eje\_y()}{acelerometro\_inclinacion\_eje\_y()}}
+{\footnotesize\ttfamily float acelerometro\+\_\+inclinacion\+\_\+eje\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Proporciona el valor de la inclinación en el eje Y, en el rango \mbox{[}-\/90, 90\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+float La inclinación en el eje Y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{acelerometro_8c_a169eee0556749ef07158f51026fdb7c4}\label{acelerometro_8c_a169eee0556749ef07158f51026fdb7c4}} 
+\index{acelerometro.c@{acelerometro.c}!acelerometro\_lectura\_x@{acelerometro\_lectura\_x}}
+\index{acelerometro\_lectura\_x@{acelerometro\_lectura\_x}!acelerometro.c@{acelerometro.c}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_x()}{acelerometro\_lectura\_x()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje X, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje X 
+\end{DoxyReturn}
+\mbox{\Hypertarget{acelerometro_8c_a794e12f2d7bd8cd9a38111cb5b7a9c71}\label{acelerometro_8c_a794e12f2d7bd8cd9a38111cb5b7a9c71}} 
+\index{acelerometro.c@{acelerometro.c}!acelerometro\_lectura\_y@{acelerometro\_lectura\_y}}
+\index{acelerometro\_lectura\_y@{acelerometro\_lectura\_y}!acelerometro.c@{acelerometro.c}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_y()}{acelerometro\_lectura\_y()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje Y, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje Y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{acelerometro_8c_ae10a8bda4f78b34f257a52c5b4e8b081}\label{acelerometro_8c_ae10a8bda4f78b34f257a52c5b4e8b081}} 
+\index{acelerometro.c@{acelerometro.c}!acelerometro\_lectura\_z@{acelerometro\_lectura\_z}}
+\index{acelerometro\_lectura\_z@{acelerometro\_lectura\_z}!acelerometro.c@{acelerometro.c}}
+\doxyparagraph{\texorpdfstring{acelerometro\_lectura\_z()}{acelerometro\_lectura\_z()}}
+{\footnotesize\ttfamily int acelerometro\+\_\+lectura\+\_\+z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor de la aceleración en el eje Z, codificado como un entero en el rango \mbox{[}-\/128, 128\mbox{]}. 
+
+\begin{DoxyReturn}{Devuelve}
+int El valor de la aceleración en el eje Z 
+\end{DoxyReturn}

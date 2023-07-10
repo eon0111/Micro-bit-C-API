@@ -1,0 +1,207 @@
+\hypertarget{display_8c}{}\doxysubsection{Referencia del Archivo display.\+c}
+\label{display_8c}\index{display.c@{display.c}}
+
+
+Conjunto de rutinas para el manejo del display de 5x5 LEDs.  
+
+
+{\ttfamily \#include \char`\"{}ubit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites.\+h\char`\"{}}\newline
+Dependencia gráfica adjunta para display.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{display_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{display_8c_a3aa069ac3980707dae1e0530f50d59e4}\label{display_8c_a3aa069ac3980707dae1e0530f50d59e4}} 
+\#define {\bfseries abs}(x)~(x $<$ 0) ? -\/x \+: x
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{display_8c_afb70e9b12379530cabaf588182fb75f1}{display\+\_\+cambia\+\_\+intensidad}} (intensidad\+\_\+t intensidad)
+\begin{DoxyCompactList}\small\item\em Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8c_a0f86055084066f0712c204c37f4f4a2c}{display\+\_\+enciende\+\_\+\+LED}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Enciende un único LED en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8c_af0964c0173cf855ab8868cbba9aaa93b}{display\+\_\+apaga\+\_\+\+LED}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Apaga un único LED en el display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{display_8c_a0bb1a525c22f32488ebdaeee7e95524d}\label{display_8c_a0bb1a525c22f32488ebdaeee7e95524d}} 
+void \mbox{\hyperlink{display_8c_a0bb1a525c22f32488ebdaeee7e95524d}{display\+\_\+limpia}} ()
+\begin{DoxyCompactList}\small\item\em Apaga todos los LEDs en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8c_a5693f80a483d2d5723b0bb9959d1e5ba}{display\+\_\+muestra\+\_\+imagen}} (\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}} img)
+\begin{DoxyCompactList}\small\item\em Muestra una imagen 2D utilizando los LEDs del display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8c_a9a969fc6cbc67ee3ebfaeed5e0489622}{display\+\_\+muestra\+\_\+secuencia}} (\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}} seq\mbox{[}$\,$\mbox{]}, int n\+\_\+elem\+\_\+seq, int delay\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Muestra una secuencia de imágenes en el display. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8c_a7b5e0aed3dadbc699fe4bacb076cf05e}{display\+\_\+muestra\+\_\+sprite}} (char $\ast$sprite\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Muestra en el display el sprite correspondiente a la codificación indicada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8c_aeac7f19bcea91c0e96fa964a5112bbd7}{display\+\_\+char2codi}} (char c, char $\ast$$\ast$codi)
+\begin{DoxyCompactList}\small\item\em Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8c_a9e70f57dd0306ec0b6410078ca9233a0}{display\+\_\+muestra\+\_\+texto}} (char $\ast$str, velocidad\+\_\+texto\+\_\+t vel)
+\begin{DoxyCompactList}\small\item\em Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Descripción detallada}
+Conjunto de rutinas para el manejo del display de 5x5 LEDs. 
+
+\begin{DoxyAuthor}{Autor}
+Noe Ruano Gutierrez (\href{mailto:nrg916@alumnos.unican.es}{\texttt{ nrg916@alumnos.\+unican.\+es}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+jul-\/2023 
+\end{DoxyDate}
+
+
+\doxysubsubsection{Documentación de las funciones}
+\mbox{\Hypertarget{display_8c_af0964c0173cf855ab8868cbba9aaa93b}\label{display_8c_af0964c0173cf855ab8868cbba9aaa93b}} 
+\index{display.c@{display.c}!display\_apaga\_LED@{display\_apaga\_LED}}
+\index{display\_apaga\_LED@{display\_apaga\_LED}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_apaga\_LED()}{display\_apaga\_LED()}}
+{\footnotesize\ttfamily int display\+\_\+apaga\+\_\+\+LED (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Apaga un único LED en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & La coordenada en el eje de abscisas dentro del display \\
+\hline
+{\em y} & La coordenada en el eje de ordenadas dentro del display \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 en caso de una terminación correcta de la función, -\/1 si el valor de alguna coordenada está fuera del rango \mbox{[}0, 4\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_afb70e9b12379530cabaf588182fb75f1}\label{display_8c_afb70e9b12379530cabaf588182fb75f1}} 
+\index{display.c@{display.c}!display\_cambia\_intensidad@{display\_cambia\_intensidad}}
+\index{display\_cambia\_intensidad@{display\_cambia\_intensidad}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_cambia\_intensidad()}{display\_cambia\_intensidad()}}
+{\footnotesize\ttfamily int display\+\_\+cambia\+\_\+intensidad (\begin{DoxyParamCaption}\item[{intensidad\+\_\+t}]{intensidad }\end{DoxyParamCaption})}
+
+
+
+Wrapper para la rutina de inicialización del proceso de refresco del display, proporcionada por la librería Microbian. 
+
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si el valor de intensidad no es apropiado, 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_aeac7f19bcea91c0e96fa964a5112bbd7}\label{display_8c_aeac7f19bcea91c0e96fa964a5112bbd7}} 
+\index{display.c@{display.c}!display\_char2codi@{display\_char2codi}}
+\index{display\_char2codi@{display\_char2codi}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_char2codi()}{display\_char2codi()}}
+{\footnotesize\ttfamily void display\+\_\+char2codi (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{char $\ast$$\ast$}]{codi }\end{DoxyParamCaption})}
+
+
+
+Obtiene la codificación de un carácter. Si la codificación del carácter no se encuentra en la librería de sprites, esta se sustituye por la codificación del signo de cierre de interrogación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em c} & El carácter cuya codificación quiere obtenerse \\
+\hline
+{\em codi} & El string donde depositar la codificación del carácter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{display_8c_a0f86055084066f0712c204c37f4f4a2c}\label{display_8c_a0f86055084066f0712c204c37f4f4a2c}} 
+\index{display.c@{display.c}!display\_enciende\_LED@{display\_enciende\_LED}}
+\index{display\_enciende\_LED@{display\_enciende\_LED}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_enciende\_LED()}{display\_enciende\_LED()}}
+{\footnotesize\ttfamily int display\+\_\+enciende\+\_\+\+LED (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Enciende un único LED en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em x} & La coordenada en el eje de abscisas dentro del display \\
+\hline
+{\em y} & La coordenada en el eje de ordenadas dentro del display \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 en caso de una terminación correcta de la función, -\/1 si el valor de alguna coordenada está fuera del rango \mbox{[}0, 4\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_a5693f80a483d2d5723b0bb9959d1e5ba}\label{display_8c_a5693f80a483d2d5723b0bb9959d1e5ba}} 
+\index{display.c@{display.c}!display\_muestra\_imagen@{display\_muestra\_imagen}}
+\index{display\_muestra\_imagen@{display\_muestra\_imagen}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_imagen()}{display\_muestra\_imagen()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+imagen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}}}]{img }\end{DoxyParamCaption})}
+
+
+
+Muestra una imagen 2D utilizando los LEDs del display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em img} & El array que contiene los valores que determinarán el estado de cada LED \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int 0 si la imagen pudo mostrarse correctamente, o 1 si alguno de los valores de la imagen no es válido 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_a9a969fc6cbc67ee3ebfaeed5e0489622}\label{display_8c_a9a969fc6cbc67ee3ebfaeed5e0489622}} 
+\index{display.c@{display.c}!display\_muestra\_secuencia@{display\_muestra\_secuencia}}
+\index{display\_muestra\_secuencia@{display\_muestra\_secuencia}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_secuencia()}{display\_muestra\_secuencia()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+secuencia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ubit_8h_a62ea13a71b705592d09e89764692cdcd}{imagen\+\_\+t}}}]{seq\mbox{[}$\,$\mbox{]},  }\item[{int}]{n\+\_\+elem\+\_\+seq,  }\item[{int}]{delay\+\_\+ms }\end{DoxyParamCaption})}
+
+
+
+Muestra una secuencia de imágenes en el display. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em seq} & El array que contiene las imágenes \\
+\hline
+{\em n\+\_\+elem\+\_\+seq} & El número de imágenes \\
+\hline
+{\em delay\+\_\+ms} & El delay entre cada imagen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si el delay indicado no es válido, o 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_a7b5e0aed3dadbc699fe4bacb076cf05e}\label{display_8c_a7b5e0aed3dadbc699fe4bacb076cf05e}} 
+\index{display.c@{display.c}!display\_muestra\_sprite@{display\_muestra\_sprite}}
+\index{display\_muestra\_sprite@{display\_muestra\_sprite}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_sprite()}{display\_muestra\_sprite()}}
+{\footnotesize\ttfamily int display\+\_\+muestra\+\_\+sprite (\begin{DoxyParamCaption}\item[{char $\ast$}]{sprite\+\_\+bin }\end{DoxyParamCaption})}
+
+
+
+Muestra en el display el sprite correspondiente a la codificación indicada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sprite\+\_\+bin} & La codificación del sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+int -\/1 si la codificación del string no tiene una longitud adecuada (1 carácter por píxel = 25 píxeles) o si alguno de los carácteres de la cadena es distinto de \textquotesingle{}0\textquotesingle{} o \textquotesingle{}1\textquotesingle{}. Retorna 0 en caso de una terminación correcta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8c_a9e70f57dd0306ec0b6410078ca9233a0}\label{display_8c_a9e70f57dd0306ec0b6410078ca9233a0}} 
+\index{display.c@{display.c}!display\_muestra\_texto@{display\_muestra\_texto}}
+\index{display\_muestra\_texto@{display\_muestra\_texto}!display.c@{display.c}}
+\doxyparagraph{\texorpdfstring{display\_muestra\_texto()}{display\_muestra\_texto()}}
+{\footnotesize\ttfamily void display\+\_\+muestra\+\_\+texto (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{velocidad\+\_\+texto\+\_\+t}]{vel }\end{DoxyParamCaption})}
+
+
+
+Muestra un texto en el display LED de la placa con una animación de deslizamiento hacia la izquierda. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em str} & El texto a mostrar \\
+\hline
+{\em v} & La velocidad con la que deberá deslizarse el texto \\
+\hline
+\end{DoxyParams}

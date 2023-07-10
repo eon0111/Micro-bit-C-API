@@ -1,0 +1,8 @@
+<map id="ubit.h" name="ubit.h">
+<area shape="rect" id="node1" title="Fichero de cabecera de la librería Ubit." alt="" coords="268,5,327,32"/>
+<area shape="rect" id="node2" href="$acelerometro_8c.html" title="Conjunto de rutinas para el manejo del acelerómetro, integrado en el chip LSM303AGR." alt="" coords="5,80,125,107"/>
+<area shape="rect" id="node3" href="$botones_8c.html" title="Conjunto de rutinas para el manejo de los botones A y B, así como el botón táctil." alt="" coords="149,80,235,107"/>
+<area shape="rect" id="node4" href="$buzzer_8c.html" title="Conjunto de rutinas para el control del zumbador piezoeléctrico." alt="" coords="259,80,335,107"/>
+<area shape="rect" id="node5" href="$display_8c.html" title="Conjunto de rutinas para el manejo del display de 5x5 LEDs." alt="" coords="359,80,438,107"/>
+<area shape="rect" id="node6" href="$misc_8c.html" title="Alberga las funciones init, microbit_inicializa_hardware y termometro_lectura." alt="" coords="463,80,527,107"/>
+</map>

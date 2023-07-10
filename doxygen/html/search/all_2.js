@@ -1,0 +1,13 @@
+var searchData=
+[
+  ['display_2ec_17',['display.c',['../display_8c.html',1,'']]],
+  ['display_5fapaga_5fled_18',['display_apaga_LED',['../display_8c.html#af0964c0173cf855ab8868cbba9aaa93b',1,'display_apaga_LED(int x, int y):&#160;display.c'],['../ubit_8h.html#af0964c0173cf855ab8868cbba9aaa93b',1,'display_apaga_LED(int x, int y):&#160;display.c']]],
+  ['display_5fcambia_5fintensidad_19',['display_cambia_intensidad',['../display_8c.html#afb70e9b12379530cabaf588182fb75f1',1,'display_cambia_intensidad(intensidad_t intensidad):&#160;display.c'],['../ubit_8h.html#ace97f8b0b859b3832bedcd5f48e95e7a',1,'display_cambia_intensidad(intensidad_t i):&#160;display.c']]],
+  ['display_5fchar2codi_20',['display_char2codi',['../display_8c.html#aeac7f19bcea91c0e96fa964a5112bbd7',1,'display_char2codi(char c, char **codi):&#160;display.c'],['../ubit_8h.html#aeac7f19bcea91c0e96fa964a5112bbd7',1,'display_char2codi(char c, char **codi):&#160;display.c']]],
+  ['display_5fenciende_5fled_21',['display_enciende_LED',['../display_8c.html#a0f86055084066f0712c204c37f4f4a2c',1,'display_enciende_LED(int x, int y):&#160;display.c'],['../ubit_8h.html#a0f86055084066f0712c204c37f4f4a2c',1,'display_enciende_LED(int x, int y):&#160;display.c']]],
+  ['display_5flimpia_22',['display_limpia',['../display_8c.html#a0bb1a525c22f32488ebdaeee7e95524d',1,'display_limpia():&#160;display.c'],['../ubit_8h.html#a0bb1a525c22f32488ebdaeee7e95524d',1,'display_limpia():&#160;display.c']]],
+  ['display_5fmuestra_5fimagen_23',['display_muestra_imagen',['../display_8c.html#a5693f80a483d2d5723b0bb9959d1e5ba',1,'display_muestra_imagen(imagen_t img):&#160;display.c'],['../ubit_8h.html#a5693f80a483d2d5723b0bb9959d1e5ba',1,'display_muestra_imagen(imagen_t img):&#160;display.c']]],
+  ['display_5fmuestra_5fsecuencia_24',['display_muestra_secuencia',['../display_8c.html#a9a969fc6cbc67ee3ebfaeed5e0489622',1,'display_muestra_secuencia(imagen_t seq[], int n_elem_seq, int delay_ms):&#160;display.c'],['../ubit_8h.html#a9a969fc6cbc67ee3ebfaeed5e0489622',1,'display_muestra_secuencia(imagen_t seq[], int n_elem_seq, int delay_ms):&#160;display.c']]],
+  ['display_5fmuestra_5fsprite_25',['display_muestra_sprite',['../display_8c.html#a7b5e0aed3dadbc699fe4bacb076cf05e',1,'display_muestra_sprite(char *sprite_bin):&#160;display.c'],['../ubit_8h.html#a7b5e0aed3dadbc699fe4bacb076cf05e',1,'display_muestra_sprite(char *sprite_bin):&#160;display.c']]],
+  ['display_5fmuestra_5ftexto_26',['display_muestra_texto',['../display_8c.html#a9e70f57dd0306ec0b6410078ca9233a0',1,'display_muestra_texto(char *str, velocidad_texto_t vel):&#160;display.c'],['../ubit_8h.html#ac70579b351f7e55c2279a178fb8f4fe6',1,'display_muestra_texto(char *str, velocidad_texto_t v):&#160;display.c']]]
+];

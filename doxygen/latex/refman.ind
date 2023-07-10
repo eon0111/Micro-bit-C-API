@@ -1,0 +1,120 @@
+\begin{theindex}
+
+  \item {acelerometro.c}, \hyperpage{2}
+    \subitem {acelerometro\_inclinacion\_eje\_x}, \hyperpage{3}
+    \subitem {acelerometro\_inclinacion\_eje\_y}, \hyperpage{3}
+    \subitem {acelerometro\_lectura\_x}, \hyperpage{4}
+    \subitem {acelerometro\_lectura\_y}, \hyperpage{4}
+    \subitem {acelerometro\_lectura\_z}, \hyperpage{4}
+  \item {acelerometro\_inclinacion\_eje\_x}
+    \subitem {acelerometro.c}, \hyperpage{3}
+    \subitem {ubit.h}, \hyperpage{16}
+  \item {acelerometro\_inclinacion\_eje\_y}
+    \subitem {acelerometro.c}, \hyperpage{3}
+    \subitem {ubit.h}, \hyperpage{16}
+  \item {acelerometro\_lectura\_x}
+    \subitem {acelerometro.c}, \hyperpage{4}
+    \subitem {ubit.h}, \hyperpage{16}
+  \item {acelerometro\_lectura\_y}
+    \subitem {acelerometro.c}, \hyperpage{4}
+    \subitem {ubit.h}, \hyperpage{17}
+  \item {acelerometro\_lectura\_z}
+    \subitem {acelerometro.c}, \hyperpage{4}
+    \subitem {ubit.h}, \hyperpage{17}
+
+  \indexspace
+
+  \item {boton\_espera\_pulsacion}
+    \subitem {botones.c}, \hyperpage{5}
+    \subitem {ubit.h}, \hyperpage{17}
+  \item {boton\_pulsado}
+    \subitem {botones.c}, \hyperpage{5}
+    \subitem {ubit.h}, \hyperpage{17}
+  \item {botones.c}, \hyperpage{4}
+    \subitem {boton\_espera\_pulsacion}, \hyperpage{5}
+    \subitem {boton\_pulsado}, \hyperpage{5}
+  \item {buzzer.c}, \hyperpage{6}
+    \subitem {buzzer\_reproduce\_nota}, \hyperpage{7}
+    \subitem {periodo\_us}, \hyperpage{7}
+  \item {buzzer\_reproduce\_nota}
+    \subitem {buzzer.c}, \hyperpage{7}
+    \subitem {ubit.h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {display.c}, \hyperpage{7}
+    \subitem {display\_apaga\_LED}, \hyperpage{8}
+    \subitem {display\_cambia\_intensidad}, \hyperpage{9}
+    \subitem {display\_char2codi}, \hyperpage{9}
+    \subitem {display\_enciende\_LED}, \hyperpage{9}
+    \subitem {display\_muestra\_imagen}, \hyperpage{10}
+    \subitem {display\_muestra\_secuencia}, \hyperpage{10}
+    \subitem {display\_muestra\_sprite}, \hyperpage{10}
+    \subitem {display\_muestra\_texto}, \hyperpage{11}
+  \item {display\_apaga\_LED}
+    \subitem {display.c}, \hyperpage{8}
+    \subitem {ubit.h}, \hyperpage{18}
+  \item {display\_cambia\_intensidad}
+    \subitem {display.c}, \hyperpage{9}
+    \subitem {ubit.h}, \hyperpage{18}
+  \item {display\_char2codi}
+    \subitem {display.c}, \hyperpage{9}
+    \subitem {ubit.h}, \hyperpage{18}
+  \item {display\_enciende\_LED}
+    \subitem {display.c}, \hyperpage{9}
+    \subitem {ubit.h}, \hyperpage{19}
+  \item {display\_muestra\_imagen}
+    \subitem {display.c}, \hyperpage{10}
+    \subitem {ubit.h}, \hyperpage{19}
+  \item {display\_muestra\_secuencia}
+    \subitem {display.c}, \hyperpage{10}
+    \subitem {ubit.h}, \hyperpage{19}
+  \item {display\_muestra\_sprite}
+    \subitem {display.c}, \hyperpage{10}
+    \subitem {ubit.h}, \hyperpage{20}
+  \item {display\_muestra\_texto}
+    \subitem {display.c}, \hyperpage{11}
+    \subitem {ubit.h}, \hyperpage{20}
+
+  \indexspace
+
+  \item {misc.c}, \hyperpage{11}
+    \subitem {termometro\_lectura}, \hyperpage{12}
+
+  \indexspace
+
+  \item {periodo\_us}
+    \subitem {buzzer.c}, \hyperpage{7}
+
+  \indexspace
+
+  \item {sprites.h}, \hyperpage{13}
+
+  \indexspace
+
+  \item {termometro\_lectura}
+    \subitem {misc.c}, \hyperpage{12}
+    \subitem {ubit.h}, \hyperpage{20}
+
+  \indexspace
+
+  \item {ubit.h}, \hyperpage{14}
+    \subitem {acelerometro\_inclinacion\_eje\_x}, \hyperpage{16}
+    \subitem {acelerometro\_inclinacion\_eje\_y}, \hyperpage{16}
+    \subitem {acelerometro\_lectura\_x}, \hyperpage{16}
+    \subitem {acelerometro\_lectura\_y}, \hyperpage{17}
+    \subitem {acelerometro\_lectura\_z}, \hyperpage{17}
+    \subitem {boton\_espera\_pulsacion}, \hyperpage{17}
+    \subitem {boton\_pulsado}, \hyperpage{17}
+    \subitem {buzzer\_reproduce\_nota}, \hyperpage{18}
+    \subitem {display\_apaga\_LED}, \hyperpage{18}
+    \subitem {display\_cambia\_intensidad}, \hyperpage{18}
+    \subitem {display\_char2codi}, \hyperpage{18}
+    \subitem {display\_enciende\_LED}, \hyperpage{19}
+    \subitem {display\_muestra\_imagen}, \hyperpage{19}
+    \subitem {display\_muestra\_secuencia}, \hyperpage{19}
+    \subitem {display\_muestra\_sprite}, \hyperpage{20}
+    \subitem {display\_muestra\_texto}, \hyperpage{20}
+    \subitem {termometro\_lectura}, \hyperpage{20}
+
+\end{theindex}
