@@ -21,6 +21,12 @@ float termometro_lectura();
 image imagen_actual_microbian;
 typedef enum {INT_BAJA, INT_MEDIA, INT_ALTA} intensidad_t;
 typedef enum {LENTO, MEDIO, RAPIDO} velocidad_texto_t;
+/**
+ * @brief El tipo de dato con que construir una imagen de la librería Ubit que
+ * pueda ser mostrada/procesada por las funciones del driver de alto nivel del 
+ * display.
+ * 
+ */
 typedef int imagen_t[DISPLAY_DIM][DISPLAY_DIM];
 int display_cambia_intensidad(intensidad_t i);
 int display_enciende_LED(int x, int y);

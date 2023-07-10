@@ -5,6 +5,11 @@
 #define NIVELES 3
 
 typedef struct {
+    int x;
+    int y;
+} coordenada_t;
+
+typedef struct {
     coordenada_t comienzo;
     coordenada_t final;
     imagen_t laberinto;

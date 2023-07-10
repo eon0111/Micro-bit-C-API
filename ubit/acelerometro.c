@@ -15,7 +15,7 @@
  * 
  */
 #define ACC 0x19
-// #define MAG 0x1E
+#define MAG 0x1E
 
 /**
  * @brief La dirección del registro de control del acelerómetro.
@@ -44,11 +44,11 @@
  */
 #define ACC_OUT_Z       0x2D
 
-// #define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
-// #define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
-// #define MAG_OUT_X       0x68    /* Valor del campo magnético en el eje X */
-// #define MAG_OUT_Y       0x6A    /* Valor del campo magnético en el eje Y */
-// #define MAG_OUT_Z       0x6C    /* Valor del campo magnético en el eje Z */
+#define MAG_CTRL_REG1   0x60    /* Registro de control del magnetómetro */
+#define MAG_CTRL_REG2   0x61    /* Otro registro de control (activación cancelación de offset) */
+#define MAG_OUT_X       0x68    /* Valor del campo magnético en el eje X */
+#define MAG_OUT_Y       0x6A    /* Valor del campo magnético en el eje Y */
+#define MAG_OUT_Z       0x6C    /* Valor del campo magnético en el eje Z */
 
 /* Constantes para el cálculo del valor de la inclinación en grados */
 #define PI 3.14159265358979323846
@@ -107,38 +107,38 @@ acelerometro_lectura_z()
     return tmp;
 }
 
-// void
-// brujula_inicializa()
-// {
-//     /* 10011000 -> b8: habilita compensación de temperatura;
-//      *             b5: modo bajo consumo;
-//      *             b4-3: 50MHz;
-//      *             b2-1: modo de medición contínua
-//      * NOTE: PDF-accel@p61-62 */
-//     i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x88);
+void
+brujula_inicializa()
+{
+    /* 10011000 -> b8: habilita compensación de temperatura;
+     *             b5: modo bajo consumo;
+     *             b4-3: 50MHz;
+     *             b2-1: modo de medición contínua
+     * NOTE: PDF-accel@p61-62 */
+    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG1, 0x88);
 
-//     /* 00000010 -> b2: habilita la cancelación de offset
-//      * NOTE: PDF-accel@p23-63 */
-//     i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG2, 0x02);
-// }
+    /* 00000010 -> b2: habilita la cancelación de offset
+     * NOTE: PDF-accel@p23-63 */
+    i2c_write_reg(I2C_INTERNAL, MAG, MAG_CTRL_REG2, 0x02);
+}
 
-// int
-// brujula_lectura_x()
-// {
-//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
-// }
+int
+brujula_lectura_x()
+{
+    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_X);
+}
 
-// int
-// brujula_lectura_y()
-// {
-//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
-// }
+int
+brujula_lectura_y()
+{
+    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Y);
+}
 
-// int
-// brujula_lectura_z()
-// {
-//     return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
-// }
+int
+brujula_lectura_z()
+{
+    return i2c_read_reg(I2C_INTERNAL, MAG, MAG_OUT_Z);
+}
 
 /**
  * @brief Retorna la potencia 'e' de un número 'b'.
