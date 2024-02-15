@@ -1,4 +1,0 @@
-<map id="sprites.h" name="sprites.h">
-<area shape="rect" id="node1" title="Una pequeña librería de sprites que pueden ser mostrados en el display." alt="" coords="5,5,84,32"/>
-<area shape="rect" id="node2" href="$display_8c.html" title="Conjunto de rutinas para el manejo del display de 5x5 LEDs." alt="" coords="5,80,84,107"/>
-</map>

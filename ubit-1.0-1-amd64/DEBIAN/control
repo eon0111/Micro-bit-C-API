@@ -3,7 +3,7 @@ Pakcage-Type: deb
 Version: 1.0
 Maintainer: Noé Ruano <nrg916@alumnos.unican.es>
 Description: Utilería para el desarrollo de aplicaciones sobre la plataforma Micro:bit
- Instala las herramientas de compilación y carga de código en el SBC, así como el linker script y la utilidad "png2string", que convierte un fichero de imagen en formato PNG, en una cadena de texto ASCII que puede ser empleada para mostrar esa imagen en el display de 5x5 LEDs de la placa.
+ Instala las herramientas de compilación y carga de código en el SBC, así como el linker script y la utilidad "png2string".
 Section: utils
 Architecture: amd64
 Origin: Debian GNU/Linux 11 (bullseye)
